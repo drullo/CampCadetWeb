@@ -20,7 +20,8 @@ export class CarouselComponent {
       '/assets/banner/landscape/car.jpg',
       '/assets/banner/landscape/armor.jpg',
       '/assets/banner/landscape/marchine.jpg',
-      '/assets/banner/landscape/med-evac.jpg'
+      '/assets/banner/landscape/med-evac.jpg',
+      '/assets/banner/landscape/trooper-salute.jpg'
     ],
     portrait: [
       '/assets/banner/portrait/psp-hellicopter.jpg',
@@ -33,7 +34,8 @@ export class CarouselComponent {
       '/assets/banner/portrait/fire-gear2.jpg',
       '/assets/banner/portrait/psp-cert.jpg',
       '/assets/banner/portrait/cert-carry.jpg',
-      '/assets/banner/portrait/fire-gear.jpg'
+      '/assets/banner/portrait/fire-gear.jpg',
+      '/assets/banner/portrait/trooper-salute.jpg'
     ]
   };
 
