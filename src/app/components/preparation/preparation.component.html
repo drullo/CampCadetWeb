@@ -1,6 +1,11 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1>{{ title }}</h1>
-    <div class="lead" [innerHTML]="blurb"></div>
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
+  <div>
+    <div class="page-title">{{ title }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Camp Preparation' | blurb"></div>
   </div>
 </div>

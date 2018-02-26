@@ -1,0 +1,25 @@
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" class="page-background" *ngIf="dataService.dataReady">
+    <div>
+      <div class="page-title">{{ title }}</div>
+  
+      <div class="page-blurb" [innerHTML]="'Useful Links Introduction' | blurb"></div>
+  
+      <mat-accordion *ngFor="let category of dataService.linkCategories">
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="category">
+              {{ category.description }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <div class="expansion-body" *ngFor="let link of dataService.links | linkForCategory:category">
+            <a [href]="link.url" target="_blank">{{ link.description }}</a>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>

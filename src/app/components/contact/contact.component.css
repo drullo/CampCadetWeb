@@ -1,0 +1,33 @@
+mat-form-field {
+    margin-bottom: 1.5em;
+    width: 100%;
+}
+
+mat-form-field:last-child {
+    margin-bottom: 0;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#directors {
+    font-size: .8em;
+    color: #ccc;
+    font-style: italic;
+}
+
+#facebook {
+    margin-top: 2em;
+}
+
+img {
+    width: 2em;
+    height: 2em;
+}
+
+a, a:visited, a:active, a:hover {
+    color: none;
+    text-decoration: none;
+}

@@ -1,15 +1,55 @@
-<div class="carousel slide" data-pause="false" data-ride="carousel" *ngIf="images">
-  <div class="carousel-inner">
-    <div class="carousel-item" *ngFor="let image of images;index as i" [class.active]="i == 0">
-        <img class="d-block w-100" [src]="image" [alt]="image">
+<div>
+  <div id="portrait-carousel" class="carousel slide" data-pause="false" data-ride="carousel">
+    <div class="carousel-inner">
+      <!-- <div class="carousel-item" *ngFor="let image of dataService.bannerImages.portrait;let i = index" [class.active]="i == 0" -->
+      <div class="carousel-item" *ngFor="let image of banner.portrait | randomize;let i = index" [class.active]="i == 0"
+        [style.background-image]="'url(' + image + ')'">
+      </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>  
+
+  <div id="landscape-carousel" class="carousel slide" data-pause="false" data-ride="carousel">
+    <div class="carousel-inner">
+      <!--<div class="carousel-item" *ngFor="let image of dataService.bannerImages.landscape;let i = index" [class.active]="i == 0"-->
+      <div class="carousel-item" *ngFor="let image of banner.landscape | randomize;let i = index" [class.active]="i == 0"
+        [style.background-image]="'url(' + image + ')'">
+      </div>
+    </div>
+  </div>
+
+  <div id="top" class="absolute">
+    <div id="title">
+      <img src="/assets/logo.png" alt="">
+      <!--<div id="county">
+        Westmoreland County
+      </div>
+      <div class="gradient">
+          <div class="one"></div>
+          <div class="two"></div>
+      </div>
+      <div id="camp-cadet">
+        CAMP CADET
+      </div>-->
+    </div>
+  </div>
+
+  <div id="bottom" class="absolute">
+    <div *ngIf="!dataService.dataReady">
+        <div>Loading Data...</div>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div *ngIf="dataService.dataReady && dataService.campDates">
+      <div>
+          Next camp session
+      </div>
+      <div id="dates">
+        {{ dataService.campDates.startDate | date:'EEEE, MMMM d' }}
+      </div>
+
+      <div class="scroll-down">{{ scrollDownText}}</div>
+    </div>
+
+    <div *ngIf="dataService.dataReady && !dataService.campDates" class="scroll-down">{{ scrollDownText}}</div>
+  </div>
 </div>

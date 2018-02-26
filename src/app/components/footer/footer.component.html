@@ -1,0 +1,23 @@
+<div id="footer" *ngIf="dataService.dataReady">
+  <div>
+    <div id="icons">
+      <a href="https://www.facebook.com/WestmorelandCountyCampCadet/" target="_blank" title="Find us on Facebook">
+        <img src="/assets/facebook.png" alt="">
+      </a>
+      
+      <img src="/assets/email2.png" alt="" title="Contact us" (click)="contact()">
+
+      <img src="/assets/donate2.png" alt="" title="Donate to Camp Cadet" [routerLink]="['/donate']">
+    </div>
+
+    <div id="address">
+      100 N. Westmoreland Ave.
+      <br>Greensburg, PA 15601
+      <br>724.832.3288
+    </div>
+  </div>
+  
+  <div id="copyright">
+    &copy; {{ year }} Westmoreland County Camp Cadet Association
+  </div>
+</div>

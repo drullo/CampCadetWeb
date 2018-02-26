@@ -1,4 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~ng2-toastr/bundles/ng2-toastr.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "styles-blurbs.css";
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a,
+a:visited,
+a:active {
+  color: #0060a6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.dark-bg a,
+.dark-bg a:visited,
+.dark-bg a:active {
+  color: #55b4f8;
+}
+
+.dark-bg a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.page-background {
+  min-height: 100vh;
+  padding: 1em;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.page-background > div:first-child {
+  border-radius: 10px;
+  padding: .5em;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: .5em 0;
+  text-align: center;
+}
+
+.page-blurb {
+  margin-bottom: 1em;
+}
+
+.mat-expansion-panel {
+  background: none;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+ul {
+  text-align: left;
+  margin-top: 1em;
+}
+
+@media (min-width: 1024px) {
+  .page-background {
+    font-size: 2em !important;
+    background-position-x: 0 !important;
+  }
+
+  .mat-expansion-panel-header {
+    font-size: 1em !important;
+  }
+
+  .expansion-body {
+    font-size: 2em;
+    margin: .75em 0;
+  }
+}

@@ -1,0 +1,49 @@
+#footer {
+  background-color: #000;
+  padding: .5em;
+  color: #fff;
+  font-size: .8em;
+}
+
+#footer>div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  max-width: 3.5em;
+  max-height: 3.5em;
+  cursor: pointer;
+}
+
+#icons {
+  width: 13em;
+  display: flex;
+  justify-content: space-between;
+}
+
+#address {
+  text-align: right;
+}
+
+#copyright {
+  font-size: .75em;
+  text-align: center;
+  margin-top: .5em;
+  color: #ccc;
+}
+
+@media (min-width: 1024px) {
+  #footer {
+    font-size: 1.1em;
+  }
+
+  img {
+    max-width: 4em;
+    max-height: 4em;
+  }
+
+  #icons {
+    width: 15em;
+  }
+}

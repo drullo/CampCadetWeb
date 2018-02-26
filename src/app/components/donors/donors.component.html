@@ -1,0 +1,33 @@
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" class="page-background" *ngIf="dataService.dataReady">
+  <div>
+    <div class="page-title" *ngFor="let category of dataService.donorCategories">{{ category.description }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Donor Introduction' | blurb"></div>
+
+    <mat-accordion *ngFor="let level of dataService.donorLevels">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="category">
+            {{ level.description }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion-body" *ngFor="let donorCatLink of dataService.donorCatLinks | donorCatLinksInLevel:level">
+          <a *ngIf="donorCatLink.donor.website" [href]="donorCatLink.donor.website" target="_blank">
+              {{ donorCatLink.donor.name }}
+          </a>
+          
+          <span *ngIf="!donorCatLink.donor.website">
+              {{ donorCatLink.donor.name }}
+          </span>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div [innerHTML]="'Donors Bottom' | blurb"></div>
+  </div>
+</div>

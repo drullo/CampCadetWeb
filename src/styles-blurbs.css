@@ -1,0 +1,60 @@
+/* These classes are used in the blurbs in the database */
+.section {
+    margin-bottom: 1em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.camp-date {
+    color: #ffe3b0;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: .5em;
+}
+
+.call-out {
+    margin-bottom: 1em;
+    padding: .25em;
+    color: #88cbdb;
+    border-radius: 5px;
+}
+
+.quote {
+    font-size: .85em;
+    margin-bottom: .5em;
+}
+
+.quote > div:first-child {
+    font-style: italic;
+    color: #185683;
+}
+
+.dark-bg .quote > div:first-child {
+    color: #88cbdb;
+}
+
+.quote > div:last-child {
+    color: #868686;
+}
+
+.dark-bg .quote > div:last-child {
+    color: #ccc;
+}
+
+.note {
+    font-size: .8em;
+    margin: .5em;
+}

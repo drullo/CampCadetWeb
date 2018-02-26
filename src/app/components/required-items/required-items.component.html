@@ -1,10 +1,15 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1>{{ title }}</h1>
-    <div class="lead" [innerHTML]="blurb"></div>
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
+  <div>
+    <div class="page-title">{{ title }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Camp Supplies Introduction' | blurb"></div>
 
     <ul>
-      <li *ngFor="let i of items" [innerHTML]="i.item"></li>
+      <li *ngFor="let i of dataService.requiredItems" [innerHTML]="i.item"></li>
     </ul>
   </div>
 </div>

@@ -1,0 +1,18 @@
+#parent {
+  background-image: url('/assets/boardroom.jpg');
+  /*background-position-x: -1000px;*/
+}
+
+.category {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.title {
+  color: #838383;
+  font-style: italic;
+}

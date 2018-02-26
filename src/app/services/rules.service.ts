@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Rule } from '../model/rule';
+import { SimpleItem } from './../model/simple-item';
+
+import { environment } from './../../environments/environment';
 
 @Injectable()
 export class RulesService {
-  url = 'http://localhost:64476/api/camprules';
+  url = `${environment.apiUrl}/api/camprules`;
 
   constructor(private http: HttpClient) { }
 
-  getRules(): Observable<Rule[]> {
-    return this.http.get<Rule[]>(this.url);
+  getRules(): Observable<SimpleItem[]> {
+    return this.http.get<SimpleItem[]>(this.url);
   }
 }

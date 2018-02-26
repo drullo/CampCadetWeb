@@ -1,3 +1,41 @@
-<p>
-  faq works!
-</p>
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" class="page-background dark-bg" *ngIf="dataService.dataReady">
+  <div>
+    <div class="page-title">Common Questions</div>
+
+    <mat-accordion *ngFor="let category of dataService.faqCategories">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="category">
+            {{ category.description }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div [id]="'accordion' + category.id">
+          <!-- Questions -->
+          <div class="card" *ngFor="let faq of dataService.faqs | faqForCategory:category">
+            <div class="card-header" [id]="'question' + faq.id">
+              <div data-toggle="collapse" aria-expanded="false"
+                [attr.aria-controls]="'answer' + category.id + '_' + faq.id"
+                [attr.data-target]="'#answer' + category.id + '_' + faq.id">
+                {{ faq.question }}
+              </div>
+            </div>
+
+            <!-- Answers -->
+            <div class="collapse"
+              [id]="'answer' + category.id + '_' + faq.id"
+              [attr.data-parent]="'#accordion' + category.id"
+              [attr.aria-labelledby]="'question' + faq.id">
+              <div class="card-body" [innerHTML]="faq.answer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

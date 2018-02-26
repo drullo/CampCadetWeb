@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Blurb } from '../model/blurb';
+import { Blurb } from './../model/blurb';
+
+import { environment } from './../../environments/environment';
 
 @Injectable()
 export class BlurbsService {
-  url = 'http://localhost:64476/api/blurbs';
+  url = `${environment.apiUrl}/api/blurbs`;
 
   constructor(private http: HttpClient) { }
 

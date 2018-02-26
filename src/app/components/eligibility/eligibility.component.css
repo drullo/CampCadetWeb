@@ -1,0 +1,11 @@
+#parent {
+    padding: .5em;
+    background-color: #555;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+#title {
+    font-weight: bold;
+    font-size: 1.3em;
+}

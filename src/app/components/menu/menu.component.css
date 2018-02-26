@@ -1,0 +1,84 @@
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  mat-toolbar.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.mat-primary {
+  background: #000;
+}
+
+mat-toolbar-row:first-child {
+  background-color: #2f2f2f;
+  font-size: .8em;
+}
+
+mat-toolbar-row:first-child img {
+  max-height: 1.5em;
+  margin-right: 1em;
+}
+
+mat-toolbar-row:last-child {
+  display: flex;
+  justify-content: space-between;
+  background-color: #4b4b4b;
+}
+
+#mobile-menu {
+  display: flex;
+}
+
+#desktop-menu {
+  display: none;
+}
+
+#more-info {
+  display: none;
+  color: #ccc;
+  font-size: .8em;
+  line-height: 1;
+  align-self: center;
+  margin-left: 1em;
+}
+
+a,
+a:visited,
+a:active,
+a:hover {
+  color: none;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  mat-toolbar-row:first-child {
+    font-size: 1.1em;
+  }
+  #more-info {
+    display: block;
+  }
+}
+
+@media (min-width: 1824px) {
+  #desktop-menu {
+    /*width: 100%;
+        display: flex;
+        justify-content: space-between;*/
+    display: block;
+  }
+  #mobile-menu {
+    display: none;
+  }
+  button {
+    background-color: #797979;
+  }
+  botton:last-child {
+    margin-right: 0;
+  }
+  button:hover {
+    background-color: #fcd285;
+    color: #000;
+  }
+}

@@ -1,0 +1,32 @@
+#parent {
+  /*background-image: url('/assets/donations2.jpg');*/
+  background-image: url('/assets/coins.jpg');
+}
+
+#paypal-form {
+  text-align: center;
+}
+
+#calculator {
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 1em;
+  max-width: 800px;
+  margin: 1.5em auto 0 auto;
+}
+
+#calculator>div:first-child {
+  text-align: center;
+  font-size: .85em;
+  margin-bottom: 1em;
+}
+
+#calculator>div:last-child {
+  margin-top: 1em;
+  text-align: center;
+  font-size: .85em;
+}
+
+mat-form-field {
+  width: 100%;
+}

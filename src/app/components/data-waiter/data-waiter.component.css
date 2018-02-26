@@ -1,0 +1,19 @@
+#parent {
+    height: 100vh;
+    padding: 2em;
+    font-size: 2em;
+    text-align: center;
+    background-color: #2f2f2f;
+    color: #fff;
+}
+
+#parent div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    line-height: 1;
+}
+
+img {
+    max-height: 40vh;
+}

@@ -1,4 +1,4 @@
-export class Rule {
+export class SimpleItem {
     id: number;
     description: string;
 }

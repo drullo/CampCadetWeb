@@ -1,0 +1,13 @@
+#parent {
+  background-image: url('/assets/keyboard.jpg');
+  /*background-position-x: -2000px;*/
+}
+
+.category {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+::ng-deep .mat-expansion-panel-body div {
+  padding-bottom: 1em !important;
+}

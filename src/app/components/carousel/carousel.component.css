@@ -1,4 +1,118 @@
-img {
-    /*opacity: 0.5;
-    filter: alpha(opacity = 50);*/ /* For IE */
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.absolute {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+#top {
+    top: 0;
+}
+
+#bottom {
+    bottom: 0;
+    padding: 1em;
+}
+
+#title {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: .5em;
+    
+    text-align: center;
+    font-weight: bold;
+}
+
+#title img {
+    max-width: 80vw;
+    max-height: 20vh;
+}
+
+#county {
+    font-size: 1.7em;
+    font-family: 'Concert One', cursive;
+    color: #494949;
+}
+
+#camp-cadet {
+    font-size: 1.5em;
+    font-family: 'Asset', cursive;
+}
+
+.gradient {
+    display: flex;
+    opacity: .6;
+}
+
+.gradient div {
+    height: 2px;
+    width: 50%;
+}
+
+.gradient .one {
+    background: linear-gradient(to right, #022ff8, #ff0000);
+}
+.gradient .two {
+    background: linear-gradient(to left, #022ff8, #ff0000);
+}
+
+#bottom > div:first-child {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: .5em;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#dates {
+    font-weight: bold;
+    color: #ffb350;
+    border-bottom: 1px solid #ccc;
+}
+
+.scroll-down {
+    color: #ccc !important;
+    font-size: .75em;
+    font-style: italic;
+}
+
+@media (orientation: landscape) {
+    #portrait-carousel { display: none; }
+    #landscape-carousel { display: block; }
+}
+
+@media (orientation: portrait) {
+    #portrait-carousel { display: block; }
+    #landscape-carousel { display: none; }
+}
+
+@media (min-width: 1024px) {
+    #county {
+        font-size: 4em;
+    }
+
+    #camp-cadet {
+        font-size: 4em;
+    }
+
+    .gradient {
+        width: 50%;
+        margin: auto;
+    }
+
+    #bottom {
+        padding: 3em;
+    }
+
+    #bottom > div:first-child {
+        font-size: 4em;
+    }
 }

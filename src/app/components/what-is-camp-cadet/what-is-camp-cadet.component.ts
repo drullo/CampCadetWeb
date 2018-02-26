@@ -1,20 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { BlurbsService } from '../../services/blurbs.service';
+import { Component } from '@angular/core';
+import { DataService } from './../../services/data.service';
 
 @Component({
   selector: 'cc-what-is-camp-cadet',
   templateUrl: './what-is-camp-cadet.component.html',
   styleUrls: ['./what-is-camp-cadet.component.css']
 })
-export class WhatIsCampCadetComponent implements OnInit {
-  title = 'What is Camp Cadet?';
-  blurbName = 'What is Camp Cadet';
-  blurb: string;
+export class WhatIsCampCadetComponent {
+  title = 'What is Camp Cadet';
 
-  constructor(private blurbService: BlurbsService) { }
-
-  ngOnInit() {
-    this.blurbService.getBlurbByName(this.blurbName)
-      .subscribe(data => this.blurb = data.blurb);
-  }
+  constructor(public dataService: DataService) { }
 }

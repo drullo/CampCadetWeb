@@ -1,0 +1,34 @@
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
+  <div>
+    <div class="page-title">{{ title }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Board Introduction' | blurb"></div>
+
+    <mat-accordion *ngFor="let category of dataService.boardMemberCategories">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="category">
+            {{ category.description }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion-body" *ngFor="let member of dataService.boardMembers | memberForCategory:category">
+          <span class="prefix">
+            {{ member.prefix }}
+          </span>
+          <span class="name">
+            {{ member.firstName }}
+            {{ member.lastName }}
+          </span>
+          <span *ngIf="member.title" class="title">
+            ({{ member.title }})
+          </span>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

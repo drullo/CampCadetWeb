@@ -1,0 +1,17 @@
+#parent {
+    background-color: #2f2f2f;
+    padding: .5em .5em 1em .5em;
+    color: #fff;
+}
+
+img {
+    float: left;
+    max-width: 25%;
+    margin-right: .5em;
+}
+
+@media (min-width: 1024px) {
+    #parent {
+        font-size: 1.5em;
+    }
+}

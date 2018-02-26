@@ -1,0 +1,49 @@
+<div *ngIf="result" class="alert" [class.alert-danger]="result === 'bad'" [class.alert-success]="result === 'good'">
+  Check the console
+</div>
+
+<form novalidate>
+  <mat-form-field>
+    <input matInput placeholder="Server" name="server" [(ngModel)]="server">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="number" matInput placeholder="Port" name="port" [(ngModel)]="port">
+  </mat-form-field>
+
+  <div>
+    <mat-checkbox name="ssl" [(ngModel)]="ssl">SSL</mat-checkbox>
+  </div>
+
+  <mat-form-field>
+    <input matInput placeholder="Subject" name="subject" [(ngModel)]="subject">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Sender" name="sender.displayName" [(ngModel)]="sender.displayName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Sender Address" name="sender.emailAddress" [(ngModel)]="sender.emailAddress">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Username" name="sender.userName" [(ngModel)]="sender.userName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password" matInput placeholder="Password" name="sender.password" [(ngModel)]="sender.password">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Recipients" name="recipients" [(ngModel)]="recipients">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Content" name="content" [(ngModel)]="content"></textarea>
+  </mat-form-field>
+
+  <div>
+      <button mat-raised-button color="primary" (click)="sendEmail()">Send</button>
+  </div>
+</form>

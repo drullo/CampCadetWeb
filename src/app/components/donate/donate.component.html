@@ -1,0 +1,38 @@
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
+  <div>
+    <div class="page-title">{{ title }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Donations' | blurb"></div>
+
+    <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" #cartForm="ngForm" (ngSubmit)="paypalSubmit(cartForm, $event)">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="D99KE7KL5YDC4">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+    <div id="calculator">
+      <div>
+          You can use this calculator to determine how much to donate via PayPal if you would like to ensure that we receive a specific dollar amount AFTER the PayPal fee deduction.
+      </div>
+      
+      <mat-form-field>
+        <input #d type="number" matInput placeholder="Our Proceeds" (keyup)="calculateDonation($event.target.value)">
+        <mat-hint>Amount you want us to receive</mat-hint>
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <div *ngIf="donation">
+        For Camp Cadet to receive
+        {{ d.value | currency:USD }},
+        your PayPal donation amount would be
+        <span class="bold">{{ donation | currency:USD }}</span>.
+      </div>
+    </div>
+  </div>
+</div>

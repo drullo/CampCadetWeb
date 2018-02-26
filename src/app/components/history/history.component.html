@@ -1,0 +1,15 @@
+<cc-menu></cc-menu>
+
+<cc-data-waiter></cc-data-waiter>
+
+<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
+  <div>
+    <div class="page-title">{{ title }}</div>
+
+    <div class="page-blurb" [innerHTML]="'Camp History' | blurb"></div>
+
+    <div id="iframe-wrapper">
+      <iframe src="https://www.youtube.com/embed/drmwqgEWTdI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+  </div>
+</div>
