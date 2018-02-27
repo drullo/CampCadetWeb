@@ -13,12 +13,33 @@
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
+
       <mat-menu #menu="matMenu">
         <button *ngIf="!atHome" mat-menu-item [routerLink]="['/home']">
           <mat-icon>home</mat-icon>
           <span>Home</span>
         </button>
 
+        <button mat-menu-item [matMenuTriggerFor]="camp">Camp Info</button>
+
+        <button mat-menu-item [matMenuTriggerFor]="operations">Camp Operations</button>
+
+        <button mat-menu-item [matMenuTriggerFor]="resources">Resources</button>
+
+        <button mat-menu-item [matMenuTriggerFor]="about">About Us</button>
+
+        <button *ngIf="!user" mat-menu-item (click)="login()">
+          <mat-icon>person</mat-icon>
+          Login
+        </button>
+
+        <button *ngIf="user" mat-menu-item (click)="logout()">
+          <img [src]="user.image" alt="">
+          Logout {{ user.name }}
+        </button>
+      </mat-menu>
+
+      <mat-menu #camp="matMenu">
         <button *ngIf="!atEnrollment" mat-menu-item [routerLink]="['/enrollment']">
           <mat-icon>directions_run</mat-icon>
           <span>Cadet Enrollment</span>
@@ -39,24 +60,16 @@
           <span>Required Items</span>
         </button>
 
-        <button *ngIf="!atCOH" mat-menu-item [routerLink]="['/coh']">
-          <mat-icon>star</mat-icon>
-          <span>Call of Honor</span>
-        </button>
-
         <button *ngIf="!atFaq" mat-menu-item [routerLink]="['/faq']">
           <mat-icon>help</mat-icon>
           <span>Common Questions</span>
         </button>
+      </mat-menu>
 
+      <mat-menu #about="matMenu">
         <button *ngIf="!atBoard" mat-menu-item [routerLink]="['/board']">
           <mat-icon>people</mat-icon>
           <span>Our Board</span>
-        </button>
-
-        <button *ngIf="!atLinks" mat-menu-item [routerLink]="['/links']">
-          <mat-icon>computer</mat-icon>
-          <span>Other Sites</span>
         </button>
 
         <button mat-menu-item (click)="contact()">
@@ -64,24 +77,39 @@
           <span>Contact Us</span>
         </button>
 
-        <button *ngIf="!atDonors" mat-menu-item [routerLink]="['/donors']">
-          <mat-icon>extension</mat-icon>
-          <span>Donors</span>
-        </button>
-
-        <button *ngIf="!atDonate" mat-menu-item [routerLink]="['/donate']">
-          <mat-icon>attach_money</mat-icon>
-          <span>Donate</span>
-        </button>
-
         <button *ngIf="!atHistory" mat-menu-item [routerLink]="['/history']">
           <mat-icon>history</mat-icon>
           <span>Camp Cadet History</span>
         </button>
       </mat-menu>
+
+      <mat-menu #operations="matMenu">
+        <button *ngIf="!atDonate" mat-menu-item [routerLink]="['/donate']">
+          <mat-icon>attach_money</mat-icon>
+          <span>Help Support Us</span>
+        </button>
+
+        <button *ngIf="!atDonors" mat-menu-item [routerLink]="['/donors']">
+          <mat-icon>extension</mat-icon>
+          <span>Current Sponsors</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #resources="matMenu">
+        <button *ngIf="!atCOH" mat-menu-item [routerLink]="['/coh']">
+          <mat-icon>star</mat-icon>
+          <span>Call of Honor</span>
+        </button>
+
+        <button *ngIf="!atLinks" mat-menu-item [routerLink]="['/links']">
+          <mat-icon>computer</mat-icon>
+          <span>Other Sites</span>
+        </button>
+      </mat-menu>
+
       <div id="more-info">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          More Info
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        More Info
       </div>
     </div>
 
@@ -148,7 +176,13 @@
     </div>
 
     <div *ngIf="application" class="dark-bg">
-      <a [href]="application" target="_blank">Download {{ applicationYear }} Application</a>
+      <a [href]="application" target="_blank">
+        <!--Download {{ applicationYear }} Application-->
+        <button mat-raised-button color="warn">
+          <mat-icon>file_download</mat-icon>
+          <span>Sign Up!</span>
+        </button>
+      </a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

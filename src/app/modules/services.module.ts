@@ -12,6 +12,7 @@ import { RequiredItemsService } from './../services/required-items.service';
 import { RulesService } from './../services/rules.service';
 import { CarouselService } from './../services/carousel.service';
 import { ContactService } from './../services/contact.service';
+import { ConfigService } from './../services/config.service';
 
 import { DataService } from './../services/data.service';
 //#endregion
@@ -21,6 +22,7 @@ import { DataService } from './../services/data.service';
         ApplicationsService,
         BlurbsService,
         BoardService,
+        ConfigService,
         ContactService,
         DateService,
         DonorsService,

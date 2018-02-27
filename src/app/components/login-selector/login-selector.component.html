@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Authentication Method</h2>
+
+<mat-dialog-content>
+  Which service would you like to use to login to our website?
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="dialogRef.close('facebook')" color="primary">
+    <i class="fa fa-facebook" aria-hidden="true"></i>
+    Facebook
+  </button>
+  <button mat-raised-button (click)="dialogRef.close('google')" color="primary">
+    <i class="fa fa-google" aria-hidden="true"></i>
+    Google
+  </button>
+  <button mat-raised-button (click)="dialogRef.close()">
+    Cancel
+  </button>
+</mat-dialog-actions>

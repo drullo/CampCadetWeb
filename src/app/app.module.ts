@@ -9,10 +9,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { CustomToastOptions } from './model/custom-toast-options';
 
+// Social login
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, } from 'angular5-social-login';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicesModule } from './modules/services.module';
 import { ComponentsModule } from './modules/components.module';
+
+// Configs
+export function getAuthServiceConfigs() {
+  return new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('194960461275730')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('934766197685-mpuahjrbct5fur2hgqf18h4rhr1lcc76.apps.googleusercontent.com')
+      }
+    ]
+  );
+}
 
 const routes: Routes = [
   { path: '**', component: AppComponent }
@@ -29,6 +48,7 @@ const routes: Routes = [
     AppRoutingModule,
 
     ToastModule.forRoot(),
+    SocialLoginModule,
 
     RouterModule.forRoot(routes),
 
@@ -36,7 +56,11 @@ const routes: Routes = [
     ComponentsModule
   ],
   providers: [
-    { provide: ToastOptions, useClass: CustomToastOptions }
+    { provide: ToastOptions, useClass: CustomToastOptions },
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [AppComponent]
 })

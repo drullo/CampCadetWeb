@@ -11,5 +11,14 @@
     <ul>
       <li *ngFor="let i of dataService.rules" [innerHTML]="i.description"></li>
     </ul>
+
+    <div id="print">
+      <a [routerLink]="['/print', 'rules']" target="_blank">
+        <button mat-raised-button color="primary">
+          <mat-icon>print</mat-icon>
+          Print
+        </button>
+      </a>
+    </div>
   </div>
 </div>

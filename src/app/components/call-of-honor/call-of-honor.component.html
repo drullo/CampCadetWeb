@@ -9,5 +9,14 @@
     <div class="page-blurb" [innerHTML]="'Call of Honor Introduction' | blurb"></div>
 
     <div id="coh" [innerHTML]="'Call of Honor' | blurb" class="call-out"></div>
+
+    <div id="print">
+      <a [routerLink]="['/print', 'coh']" target="_blank">
+        <button mat-raised-button color="primary">
+          <mat-icon>print</mat-icon>
+          Print
+        </button>
+      </a>
+    </div>
   </div>
 </div>

@@ -1,0 +1,48 @@
+<cc-data-waiter></cc-data-waiter>
+
+<div id="print-parent" *ngIf="dataService.dataReady" [ngSwitch]="topic">
+  <div *ngSwitchCase="'coh'">
+    <div class="title">Camp Cadet Call of Honor</div>
+    <div [innerHTML]="'Call of Honor' | blurb"></div>
+  </div>
+
+  <div *ngSwitchCase="'faq'">
+    <div class="title">Common Questions</div>
+    
+    <div class="faq" *ngFor="let category of dataService.faqCategories">
+      <div class="faq-category">{{ category.description }}</div>
+
+      <div *ngFor="let faq of dataService.faqs | faqForCategory:category">
+        <div class="faq-question">{{ faq.question }}</div>
+        <div class="faq-answer" [innerHTML]="faq.answer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'prep'">
+      <div class="title">Preparing for Camp Cadet</div>
+      <div [innerHTML]="'Camp Preparation' | blurb"></div>
+  </div>
+
+  <div *ngSwitchCase="'enrollment'">
+    <div class="title">Camp Cadet Enrollment</div>
+
+    <div [innerHTML]="'Sign Up' | blurb"></div>
+  </div>
+
+  <div *ngSwitchCase="'rules'">
+    <div class="title">Camp Cadet Rules</div>
+
+    <ul>
+      <li *ngFor="let i of dataService.rules" [innerHTML]="i.description"></li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="'required-items'">
+    <div class="title">Camp Cadet Required Items</div>
+
+    <ul>
+        <li *ngFor="let i of dataService.requiredItems" [innerHTML]="i.item"></li>
+    </ul>
+  </div>
+</div>

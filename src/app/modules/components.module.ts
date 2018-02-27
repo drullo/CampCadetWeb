@@ -11,6 +11,7 @@ import { BoardComponent } from './../components/board/board.component';
 import { CallOfHonorComponent } from './../components/call-of-honor/call-of-honor.component';
 import { CarouselComponent } from './../components/carousel/carousel.component';
 import { ContactComponent } from './../components/contact/contact.component';
+import { DataWaiterComponent } from './../components/data-waiter/data-waiter.component';
 import { DonateComponent } from './../components/donate/donate.component';
 import { DonorsComponent } from './../components/donors/donors.component';
 import { EmailTestComponent } from './../components/email-test/email-test.component';
@@ -21,13 +22,14 @@ import { FooterComponent } from './../components/footer/footer.component';
 import { HistoryComponent } from './../components/history/history.component';
 import { HomeComponent } from './../components/home/home.component';
 import { LinksComponent } from './../components/links/links.component';
+import { LoginSelectorComponent } from './../components/login-selector/login-selector.component';
 import { MenuComponent } from './../components/menu/menu.component';
 import { PreparationComponent } from './../components/preparation/preparation.component';
+import { PrintComponent } from './../components/print/print.component';
+import { PromoVideoComponent } from './../components/promo-video/promo-video.component';
 import { RequiredItemsComponent } from './../components/required-items/required-items.component';
 import { RulesComponent } from './../components/rules/rules.component';
 import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/what-is-camp-cadet.component';
-
-import { DataWaiterComponent } from './../components/data-waiter/data-waiter.component';
 //#endregion
 
 @NgModule({
@@ -44,6 +46,7 @@ import { DataWaiterComponent } from './../components/data-waiter/data-waiter.com
         CallOfHonorComponent,
         CarouselComponent,
         ContactComponent,
+        DataWaiterComponent,
         DonateComponent,
         DonorsComponent,
         EligibilityComponent,
@@ -54,19 +57,21 @@ import { DataWaiterComponent } from './../components/data-waiter/data-waiter.com
         HistoryComponent,
         HomeComponent,
         LinksComponent,
+        LoginSelectorComponent,
         MenuComponent,
         PreparationComponent,
+        PrintComponent,
+        PromoVideoComponent,
         RequiredItemsComponent,
         RulesComponent,
-        WhatIsCampCadetComponent,
-
-        DataWaiterComponent
+        WhatIsCampCadetComponent
     ],
     exports: [
         BoardComponent,
         CallOfHonorComponent,
         CarouselComponent,
         ContactComponent,
+        DataWaiterComponent,
         DonateComponent,
         DonorsComponent,
         EligibilityComponent,
@@ -77,16 +82,18 @@ import { DataWaiterComponent } from './../components/data-waiter/data-waiter.com
         HistoryComponent,
         HomeComponent,
         LinksComponent,
+        LoginSelectorComponent,
         MenuComponent,
         PreparationComponent,
+        PrintComponent,
+        PromoVideoComponent,
         RequiredItemsComponent,
         RulesComponent,
-        WhatIsCampCadetComponent,
-
-        DataWaiterComponent
+        WhatIsCampCadetComponent
     ],
     entryComponents: [
-      ContactComponent
+      ContactComponent,
+      LoginSelectorComponent
     ]
 })
 export class ComponentsModule { }

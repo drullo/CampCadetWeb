@@ -13,6 +13,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { HomeComponent } from './components/home/home.component';
 import { LinksComponent } from './components/links/links.component';
 import { PreparationComponent } from './components/preparation/preparation.component';
+import { PrintComponent } from './components/print/print.component';
 import { RequiredItemsComponent } from './components/required-items/required-items.component';
 import { RulesComponent } from './components/rules/rules.component';
 //#endregion
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'links', component: LinksComponent },
   { path: 'prep', component: PreparationComponent },
+  { path: 'print/:topic', component: PrintComponent },
   { path: 'requirements', component: RequiredItemsComponent },
   { path: 'rules', component: RulesComponent },
   { path: '**', component: HomeComponent }

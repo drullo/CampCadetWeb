@@ -2,6 +2,5 @@
 <!-- C:\Users\rullo\OneDrive\Pictures\Camp Cadet 2017 -->
 
 <!-- <cc-data-waiter></cc-data-waiter> -->
-
-<router-outlet></router-outlet>
-<cc-footer *ngIf="dataService.dataReady"></cc-footer>
+<router-outlet (activate)="routeActivate($event)"></router-outlet>
+<cc-footer *ngIf="showFooter && dataService.dataReady"></cc-footer>

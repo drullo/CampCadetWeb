@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Blurb } from './../model/blurb';
 import { BoardMember } from './../model/board-member';
 import { CampDates } from './../model/camp-dates';
+import { ConfigSetting } from './../model/config-setting';
 import { DonorCategoryLink } from './../model/donor-category-link';
 import { DonorLevel } from './../model/donor-level';
 import { Faq } from './../model/faq';
@@ -16,6 +17,7 @@ import { SimpleItem } from './../model/simple-item';
 import { BlurbsService } from './blurbs.service';
 import { BoardService } from './board.service';
 import { CarouselService } from './carousel.service';
+import { ConfigService } from './config.service';
 import { ContactService } from './contact.service';
 import { DateService } from './date.service';
 import { DonorsService } from './donors.service';
@@ -47,10 +49,12 @@ export class DataService {
   contactTypes: SimpleItem[];
   contactReasons: SimpleItem[];
   boardDirectors: BoardMember[];
+  configSettings: ConfigSetting[];
 
   constructor(private blurbService: BlurbsService,
     private boardService: BoardService,
     private carouselService: CarouselService,
+    private configService: ConfigService,
     private contactService: ContactService,
     private dateService: DateService,
     private donorService: DonorsService,
@@ -237,6 +241,11 @@ export class DataService {
         this.rules = data;
         this.afterDataRetrieved();
       });
+
+    this.configService.getAllSettings().subscribe(data => {
+      this.configSettings = data;
+      this.afterDataRetrieved();
+    });
   }
 
   afterDataRetrieved(): void {
@@ -257,7 +266,8 @@ export class DataService {
       !this.linkCategories ||
       !this.requirements ||
       !this.requiredItems ||
-      !this.rules) {
+      !this.rules ||
+      !this.configSettings) {
       return;
     }
 
