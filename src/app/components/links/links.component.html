@@ -4,9 +4,9 @@
 
 <div id="parent" class="page-background" *ngIf="dataService.dataReady">
     <div>
-      <div class="page-title">{{ title }}</div>
+      <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
   
-      <div class="page-blurb" [innerHTML]="'Useful Links Introduction' | blurb"></div>
+      <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
   
       <mat-accordion *ngFor="let category of dataService.linkCategories">
         <mat-expansion-panel expanded="true">

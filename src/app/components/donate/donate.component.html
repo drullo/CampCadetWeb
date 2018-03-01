@@ -4,9 +4,9 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
 
-    <div class="page-blurb" [innerHTML]="'Donations' | blurb"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
 
     <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" #cartForm="ngForm" (ngSubmit)="paypalSubmit(cartForm, $event)">
       <input type="hidden" name="cmd" value="_s-xclick">
@@ -29,9 +29,9 @@
 
       <div *ngIf="donation">
         For Camp Cadet to receive
-        {{ d.value | currency:USD }},
+        {{ d.value | currency:'USD' }},
         your PayPal donation amount would be
-        <span class="bold">{{ donation | currency:USD }}</span>.
+        <span class="bold">{{ donation | currency:'USD' }}</span>.
       </div>
     </div>
   </div>

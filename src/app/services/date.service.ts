@@ -9,7 +9,23 @@ export class DateService {
 
   constructor(private http: HttpClient) { }
 
+  getAll(): Observable<CampDates[]> {
+    return this.http.get<CampDates[]>(this.url);
+  }
+
   getCurrent(): Observable<CampDates[]> {
     return this.http.get<CampDates[]>(`${this.url}/current`);
+  }
+
+  add(dates: CampDates): Observable<CampDates> {
+    return this.http.post<CampDates>(this.url, dates);
+  }
+
+  update(dates: CampDates): Observable<CampDates> {
+    return this.http.put<CampDates>(this.url, dates);
+  }
+
+  delete(dates: CampDates): Observable<CampDates> {
+    return this.http.put<CampDates>(`${this.url}/delete`, dates);
   }
 }

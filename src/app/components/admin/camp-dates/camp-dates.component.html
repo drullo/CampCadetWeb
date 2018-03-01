@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>Edit Camp Dates</h2>
+
+<mat-dialog-content>
+  <mat-tab-group  [(selectedIndex)]="selectedTabIndex">
+
+    <mat-tab label="Add">
+      <form #newForm="ngForm" class="grid">
+        <mat-form-field>
+          <input matInput [matDatepicker]="startPicker" placeholder="Start date" ngModel name="startDate" #startDate="ngModel" required>
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="endPicker" placeholder="End date" ngModel name="endDate" #endDate="ngModel" required>
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="availablePicker" placeholder="Application available date" ngModel name="availableDate" #availableDate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="availablePicker"></mat-datepicker-toggle>
+          <mat-datepicker #availablePicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="deadlinePicker" placeholder="Application due date" ngModel name="dueDate" #dueDate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="deadlinePicker"></mat-datepicker-toggle>
+          <mat-datepicker #deadlinePicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="orientationPicker" placeholder="Orientation date" ngModel name="orientationDate" #orientationDate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="orientationPicker"></mat-datepicker-toggle>
+          <mat-datepicker #orientationPicker touchUi></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="Edit">
+      <mat-form-field>
+        <mat-select placeholder="Select camp start date" (change)="dateSelected($event.value.startDate)">
+          <mat-option *ngFor="let campDate of campDates" [value]="campDate">{{ campDate.startDate | date:'shortDate' }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="grid" *ngIf="updateRecord">
+        <mat-form-field>
+          <input matInput [matDatepicker]="startPicker" placeholder="Start date" name="startDate" [(ngModel)]="updateRecord.startDate" required>
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="endPicker" placeholder="End date" name="endDate" [(ngModel)]="updateRecord.endDate" required>
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="availablePicker" placeholder="Application available date" name="availableDate" [(ngModel)]="updateRecord.applicationsAvailableBeginning">
+          <mat-datepicker-toggle matSuffix [for]="availablePicker"></mat-datepicker-toggle>
+          <mat-datepicker #availablePicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="deadlinePicker" placeholder="Application due date" name="dueDate" [(ngModel)]="updateRecord.applicationDeadline">
+          <mat-datepicker-toggle matSuffix [for]="deadlinePicker"></mat-datepicker-toggle>
+          <mat-datepicker #deadlinePicker touchUi></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="orientationPicker" placeholder="Orientation date" name="orientationDate" [(ngModel)]="updateRecord.orientationDate">
+          <mat-datepicker-toggle matSuffix [for]="orientationPicker"></mat-datepicker-toggle>
+          <mat-datepicker #orientationPicker touchUi></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="dialogRef.close()">Close</button>
+  <button *ngIf="selectedTabIndex === 0 && newForm.dirty && newForm.valid" mat-raised-button color="primary" (click)="add(newForm.value)">Add</button>
+  <button *ngIf="selectedTabIndex === 1 && updateRecord" mat-raised-button color="primary" (click)="update()">Update</button>
+  <button *ngIf="selectedTabIndex === 1 && updateRecord" mat-raised-button color="warn" (click)="delete()">Delete</button>
+</mat-dialog-actions>

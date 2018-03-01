@@ -22,4 +22,8 @@ export class BlurbsService {
   getBlurbByName(name: string): Observable<Blurb> {
     return this.http.get<Blurb>(`${this.url}/name/${name}`);
   }
+
+  update(blurb: Blurb): Observable<any> {
+    return this.http.put<any>(`${this.url}/${blurb.id}`, blurb);
+  }
 }

@@ -8,7 +8,9 @@ import { MaterialModule } from './material.module';
 import { PipesModule } from './pipes.module';
 
 import { BoardComponent } from './../components/board/board.component';
+import { BlurbComponent } from './../components/admin/blurb/blurb.component';
 import { CallOfHonorComponent } from './../components/call-of-honor/call-of-honor.component';
+import { CampDatesComponent } from './../components/admin/camp-dates/camp-dates.component';
 import { CarouselComponent } from './../components/carousel/carousel.component';
 import { ContactComponent } from './../components/contact/contact.component';
 import { DataWaiterComponent } from './../components/data-waiter/data-waiter.component';
@@ -42,8 +44,10 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         PipesModule
     ],
     declarations: [
+        BlurbComponent,
         BoardComponent,
         CallOfHonorComponent,
+        CampDatesComponent,
         CarouselComponent,
         ContactComponent,
         DataWaiterComponent,
@@ -67,8 +71,10 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         WhatIsCampCadetComponent
     ],
     exports: [
+        BlurbComponent,
         BoardComponent,
         CallOfHonorComponent,
+        CampDatesComponent,
         CarouselComponent,
         ContactComponent,
         DataWaiterComponent,
@@ -92,8 +98,12 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         WhatIsCampCadetComponent
     ],
     entryComponents: [
-      ContactComponent,
-      LoginSelectorComponent
+        ContactComponent,
+        LoginSelectorComponent,
+
+        // Admin components
+        BlurbComponent,
+        CampDatesComponent
     ]
 })
 export class ComponentsModule { }

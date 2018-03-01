@@ -4,9 +4,9 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
 
-    <div class="page-blurb" [innerHTML]="'Camp Rules Introduction' | blurb"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
 
     <ul>
       <li *ngFor="let i of dataService.rules" [innerHTML]="i.description"></li>

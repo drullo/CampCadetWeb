@@ -1,3 +1,5 @@
+import { CampDatesComponent } from './../admin/camp-dates/camp-dates.component';
+import { AuthenticationService } from './../../services/authentication.service';
 //#region Imports
 import { Component, OnInit, ViewContainerRef, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
@@ -66,7 +68,8 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     private toastr: ToastsManager,
     private vcr: ViewContainerRef,
     public dataService: DataService,
-    private socialAuthService: AuthService) {
+    private socialAuthService: AuthService,
+    private authenticationService: AuthenticationService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -177,6 +180,7 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     localStorage.removeItem('facebook');
     localStorage.removeItem('google');
     this.user = null;
+    this.authenticationService.loggedIn = false;
     this.toastr.success('Logged out');
   }
 
@@ -191,6 +195,16 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     const split = admins.value.split(';');
     const match = split.filter(admin => admin.toLowerCase() === userEmail.toLowerCase())[0];
 
-    return match !== undefined && match !== null;
+    const validUser = match !== undefined && match !== null;
+    this.authenticationService.loggedIn = validUser;
+    return validUser;
+  }
+
+  edit(topic: string): void {
+    switch (topic) {
+      case 'campDates':
+        this.dialog.open(CampDatesComponent);
+        break;
+    }
   }
 }

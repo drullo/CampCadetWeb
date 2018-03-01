@@ -28,14 +28,15 @@
 
         <button mat-menu-item [matMenuTriggerFor]="about">About Us</button>
 
+        <button *ngIf="user" mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
+
         <button *ngIf="!user" mat-menu-item (click)="login()">
           <mat-icon>person</mat-icon>
           Login
         </button>
 
         <button *ngIf="user" mat-menu-item (click)="logout()">
-          <img [src]="user.image" alt="">
-          Logout {{ user.name }}
+          <img [src]="user.image" alt=""> Logout {{ user.name }}
         </button>
       </mat-menu>
 
@@ -104,6 +105,12 @@
         <button *ngIf="!atLinks" mat-menu-item [routerLink]="['/links']">
           <mat-icon>computer</mat-icon>
           <span>Other Sites</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #admin="matMenu">
+        <button mat-menu-item (click)="edit('campDates')">
+          <span>Camp Dates</span>
         </button>
       </mat-menu>
 

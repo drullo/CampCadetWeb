@@ -28,7 +28,7 @@ export class ContactComponent {
   //#endregion
   matcher = new FormErrorState();
 
-  sendToDirectors = true;
+  sendToDirectors = false;
   forcedRecipients = [
     'rullo.dan@gmail.com',
     'drullo@cleavelandprice.com']; // Send to these addresses no matter what

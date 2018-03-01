@@ -1,0 +1,11 @@
+h2 {
+    text-align: center;
+}
+
+h2 span:first-child {
+    font-weight: bold;
+}
+
+mat-form-field {
+    width: 100%;
+}

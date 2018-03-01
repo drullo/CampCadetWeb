@@ -1,3 +1,6 @@
+import { AuthenticationService } from './../../services/authentication.service';
+import { CampDatesComponent } from './../admin/camp-dates/camp-dates.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { DataService } from './../../services/data.service';
 
@@ -39,5 +42,12 @@ export class CarouselComponent {
     ]
   };
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService,
+    public authenticationService: AuthenticationService,
+    private dialog: MatDialog) { }
+
+  editCampDates(): void {
+    if (!this.authenticationService.loggedIn) { return; }
+    this.dialog.open(CampDatesComponent);
+  }
 }

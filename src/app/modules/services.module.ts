@@ -1,6 +1,7 @@
 //#region Imports
 import { NgModule } from '@angular/core';
 import { ApplicationsService } from './../services/applications.service';
+import { AuthenticationService } from './../services/authentication.service';
 import { BlurbsService } from './../services/blurbs.service';
 import { BoardService } from './../services/board.service';
 import { DateService } from './../services/date.service';
@@ -20,6 +21,7 @@ import { DataService } from './../services/data.service';
 @NgModule({
     providers: [
         ApplicationsService,
+        AuthenticationService,
         BlurbsService,
         BoardService,
         ConfigService,

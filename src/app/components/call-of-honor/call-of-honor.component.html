@@ -4,11 +4,11 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
 
-    <div class="page-blurb" [innerHTML]="'Call of Honor Introduction' | blurb"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
 
-    <div id="coh" [innerHTML]="'Call of Honor' | blurb" class="call-out"></div>
+    <div id="coh" [innerHTML]="blurbNameCoh | blurb" class="call-out" (click)="editBlurb(blurbNameCoh)"></div>
 
     <div id="print">
       <a [routerLink]="['/print', 'coh']" target="_blank">

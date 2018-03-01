@@ -85,6 +85,10 @@ ul {
   color: none;
 }
 
+.editable {
+  cursor: pointer;
+}
+
 @media (min-width: 1024px) {
   .page-background {
     font-size: 2em !important;

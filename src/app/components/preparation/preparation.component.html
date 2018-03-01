@@ -4,9 +4,9 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
 
-    <div class="page-blurb" [innerHTML]="'Camp Preparation' | blurb"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
 
     <div id="print">
       <a [routerLink]="['/print', 'prep']" target="_blank">

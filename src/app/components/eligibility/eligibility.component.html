@@ -1,6 +1,6 @@
-<div id="parent" *ngIf="dataService.dataReady">
+<div id="parent" *ngIf="dataService.dataReady" (click)="editBlurb(blurbName)">
   <div id="title">{{ title }}</div>
-  <div id="blurb" [innerHTML]="'Eligibility' | blurb"></div>
+  <div id="blurb" [innerHTML]="blurbName | blurb"></div>
 
   <ul>
     <li *ngFor="let i of dataService.requirements" [innerHTML]="i.requirement"></li>

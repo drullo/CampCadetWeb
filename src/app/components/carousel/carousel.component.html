@@ -39,7 +39,10 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
 
-    <div *ngIf="dataService.dataReady && dataService.campDates">
+    <div *ngIf="dataService.dataReady && dataService.campDates"
+      [class.editable]="authenticationService.loggedIn"
+      [title]="authenticationService.loggedIn ? 'Click to edit camp dates' : ''"
+      (click)="editCampDates()">
       <div>
           Next camp session
       </div>

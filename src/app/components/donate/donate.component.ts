@@ -1,3 +1,6 @@
+import { AuthenticationService } from './../../services/authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BlurbEditable } from './../../model/blurb-editable';
 import { Component } from '@angular/core';
 import { DataService } from './../../services/data.service';
 
@@ -6,11 +9,16 @@ import { DataService } from './../../services/data.service';
   templateUrl: './donate.component.html',
   styleUrls: ['./donate.component.css']
 })
-export class DonateComponent {
+export class DonateComponent extends BlurbEditable {
   title = 'Donation Information';
+  blurbName = 'Donations';
   donation: number;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService,
+    dialog: MatDialog,
+    authenticationService: AuthenticationService) {
+    super(dialog, authenticationService);
+  }
 
   paypalSubmit(form: any, e: any): void {
     e.target.submit();
