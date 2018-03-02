@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from './../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 
 @Component({
   selector: 'cc-faq',

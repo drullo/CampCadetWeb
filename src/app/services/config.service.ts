@@ -1,9 +1,9 @@
-import { ConfigSetting } from './../model/config-setting';
+import { ConfigSetting } from '@campcadet/model/config-setting';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 
 @Injectable()
 export class ConfigService {

@@ -1,7 +1,7 @@
-import { DonorLevel } from './../model/donor-level';
-import { DonorCategoryLink } from './../model/donor-category-link';
+import { DonorLevel } from '@campcadet/model/donor-level';
+import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 

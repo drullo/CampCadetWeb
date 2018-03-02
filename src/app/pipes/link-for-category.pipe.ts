@@ -1,5 +1,5 @@
-import { SimpleItem } from './../model/simple-item';
-import { Link } from './../model/link';
+import { SimpleItem } from '@campcadet/model/simple-item';
+import { Link } from '@campcadet/model/link';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

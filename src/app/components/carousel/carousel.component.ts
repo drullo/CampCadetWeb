@@ -1,8 +1,8 @@
-import { AuthenticationService } from './../../services/authentication.service';
-import { CampDatesComponent } from './../admin/camp-dates/camp-dates.component';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
+import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
-import { DataService } from './../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 
 @Component({
   selector: 'cc-carousel',

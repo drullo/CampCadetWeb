@@ -1,4 +1,4 @@
-import { DataService } from './../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

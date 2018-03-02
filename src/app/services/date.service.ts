@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { CampDates } from './../model/camp-dates';
-import { environment } from './../../environments/environment';
+import { CampDates } from '@campcadet/model/camp-dates';
+import { environment } from '@environment/environment';
 @Injectable()
 export class DateService {
   url = `${environment.apiUrl}/api/campdates`;

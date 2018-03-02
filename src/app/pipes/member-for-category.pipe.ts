@@ -1,5 +1,5 @@
-import { BoardMember } from './../model/board-member';
-import { SimpleItem } from './../model/simple-item';
+import { BoardMember } from '@campcadet/model/board-member';
+import { SimpleItem } from '@campcadet/model/simple-item';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

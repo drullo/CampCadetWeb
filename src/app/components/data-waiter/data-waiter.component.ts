@@ -1,4 +1,4 @@
-import { DataService } from './../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 import { Component } from '@angular/core';
 
 @Component({

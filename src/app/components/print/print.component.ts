@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { DataService } from './../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 import 'rxjs/add/observable/timer';
 
 @Component({

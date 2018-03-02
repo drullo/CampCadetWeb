@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Blurb } from './../model/blurb';
+import { Blurb } from '@campcadet/model/blurb';
 
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 
 @Injectable()
 export class BlurbsService {

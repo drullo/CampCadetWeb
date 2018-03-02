@@ -2,20 +2,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BoardComponent } from './components/board/board.component';
-import { CallOfHonorComponent } from './components/call-of-honor/call-of-honor.component';
-import { DonateComponent } from './components/donate/donate.component';
-import { DonorsComponent } from './components/donors/donors.component';
-import { EmailTestComponent } from './components/email-test/email-test.component';
-import { EnrollmentComponent } from './components/enrollment/enrollment.component';
-import { FAQComponent } from './components/faq/faq.component';
-import { HistoryComponent } from './components/history/history.component';
-import { HomeComponent } from './components/home/home.component';
-import { LinksComponent } from './components/links/links.component';
-import { PreparationComponent } from './components/preparation/preparation.component';
-import { PrintComponent } from './components/print/print.component';
-import { RequiredItemsComponent } from './components/required-items/required-items.component';
-import { RulesComponent } from './components/rules/rules.component';
+import { BoardComponent } from '@campcadet/components/board/board.component';
+import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
+import { DonateComponent } from '@campcadet/components/donate/donate.component';
+import { DonorsComponent } from '@campcadet/components/donors/donors.component';
+import { EmailTestComponent } from '@campcadet/components/email-test/email-test.component';
+import { EnrollmentComponent } from '@campcadet/components/enrollment/enrollment.component';
+import { FAQComponent } from '@campcadet/components/faq/faq.component';
+import { HistoryComponent } from '@campcadet/components/history/history.component';
+import { HomeComponent } from '@campcadet/components/home/home.component';
+import { LinksComponent } from '@campcadet/components/links/links.component';
+import { PreparationComponent } from '@campcadet/components/preparation/preparation.component';
+import { PrintComponent } from '@campcadet/components/print/print.component';
+import { RequiredItemsComponent } from '@campcadet/components/required-items/required-items.component';
+import { RulesComponent } from '@campcadet/components/rules/rules.component';
 //#endregion
 
 const routes: Routes = [

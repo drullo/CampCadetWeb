@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Requirement } from './../model/requirement';
+import { Requirement } from '@campcadet/model/requirement';
 
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 
 @Injectable()
 export class RequirementsService {

@@ -1,8 +1,8 @@
 import { MatDialog } from '@angular/material/dialog';
-import { BlurbEditable } from './../../model/blurb-editable';
+import { BlurbEditable } from '@campcadet/model/blurb-editable';
 import { Component } from '@angular/core';
-import { DataService } from './../../services/data.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { DataService } from '@campcadet/services/data.service';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
 
 @Component({
   selector: 'cc-what-is-camp-cadet',

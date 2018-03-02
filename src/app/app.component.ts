@@ -1,5 +1,5 @@
-import { PrintComponent } from './components/print/print.component';
-import { DataService } from './services/data.service';
+import { PrintComponent } from '@campcadet/components/print/print.component';
+import { DataService } from '@campcadet/services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

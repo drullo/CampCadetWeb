@@ -1,9 +1,9 @@
-import { Faq } from './../model/faq';
+import { Faq } from '@campcadet/model/faq';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SimpleItem } from '../model/simple-item';
+import { SimpleItem } from '@campcadet/model/simple-item';
 
 @Injectable()
 export class FaqService {

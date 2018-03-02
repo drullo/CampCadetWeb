@@ -1,5 +1,5 @@
-import { ContactService } from './../../services/contact.service';
-import { Email } from './../../model/email';
+import { ContactService } from '@campcadet/services/contact.service';
+import { Email } from '@campcadet/model/email';
 import { Component } from '@angular/core';
 
 @Component({

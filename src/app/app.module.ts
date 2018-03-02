@@ -7,15 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Ng2-Toastr
 import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
-import { CustomToastOptions } from './model/custom-toast-options';
+import { CustomToastOptions } from '@campcadet/model/custom-toast-options';
 
 // Social login
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, } from 'angular5-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServicesModule } from './modules/services.module';
-import { ComponentsModule } from './modules/components.module';
+import { ServicesModule } from '@campcadet/modules/services.module';
+import { ComponentsModule } from '@campcadet/modules/components.module';
 
 // Configs
 export function getAuthServiceConfigs() {

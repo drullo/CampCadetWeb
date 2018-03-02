@@ -1,8 +1,8 @@
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
-import { BlurbEditable } from './../../model/blurb-editable';
+import { BlurbEditable } from '@campcadet/model/blurb-editable';
 import { Component } from '@angular/core';
-import { DataService } from './../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 
 @Component({
   selector: 'cc-rules',

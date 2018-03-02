@@ -1,5 +1,5 @@
-import { DonorLevel } from './../model/donor-level';
-import { DonorCategoryLink } from './../model/donor-category-link';
+import { DonorLevel } from '@campcadet/model/donor-level';
+import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

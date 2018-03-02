@@ -4,34 +4,42 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule } from './material.module';
-import { PipesModule } from './pipes.module';
+import { MaterialModule } from '@campcadet/modules/material.module';
+import { PipesModule } from '@campcadet/modules/pipes.module';
 
-import { BoardComponent } from './../components/board/board.component';
-import { BlurbComponent } from './../components/admin/blurb/blurb.component';
-import { CallOfHonorComponent } from './../components/call-of-honor/call-of-honor.component';
-import { CampDatesComponent } from './../components/admin/camp-dates/camp-dates.component';
-import { CarouselComponent } from './../components/carousel/carousel.component';
-import { ContactComponent } from './../components/contact/contact.component';
-import { DataWaiterComponent } from './../components/data-waiter/data-waiter.component';
-import { DonateComponent } from './../components/donate/donate.component';
-import { DonorsComponent } from './../components/donors/donors.component';
-import { EmailTestComponent } from './../components/email-test/email-test.component';
-import { EnrollmentComponent } from './../components/enrollment/enrollment.component';
-import { EligibilityComponent } from './../components/eligibility/eligibility.component';
-import { FAQComponent } from './../components/faq/faq.component';
-import { FooterComponent } from './../components/footer/footer.component';
-import { HistoryComponent } from './../components/history/history.component';
-import { HomeComponent } from './../components/home/home.component';
-import { LinksComponent } from './../components/links/links.component';
-import { LoginSelectorComponent } from './../components/login-selector/login-selector.component';
-import { MenuComponent } from './../components/menu/menu.component';
-import { PreparationComponent } from './../components/preparation/preparation.component';
-import { PrintComponent } from './../components/print/print.component';
-import { PromoVideoComponent } from './../components/promo-video/promo-video.component';
-import { RequiredItemsComponent } from './../components/required-items/required-items.component';
-import { RulesComponent } from './../components/rules/rules.component';
-import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/what-is-camp-cadet.component';
+import { BoardComponent } from '@campcadet/components/board/board.component';
+import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
+import { CarouselComponent } from '@campcadet/components/carousel/carousel.component';
+import { ContactComponent } from '@campcadet/components/contact/contact.component';
+import { DataWaiterComponent } from '@campcadet/components/data-waiter/data-waiter.component';
+import { DonateComponent } from '@campcadet/components/donate/donate.component';
+import { DonorsComponent } from '@campcadet/components/donors/donors.component';
+import { EmailTestComponent } from '@campcadet/components/email-test/email-test.component';
+import { EnrollmentComponent } from '@campcadet/components/enrollment/enrollment.component';
+import { EligibilityComponent } from '@campcadet/components/eligibility/eligibility.component';
+import { FAQComponent } from '@campcadet/components/faq/faq.component';
+import { FooterComponent } from '@campcadet/components/footer/footer.component';
+import { HistoryComponent } from '@campcadet/components/history/history.component';
+import { HomeComponent } from '@campcadet/components/home/home.component';
+import { LinksComponent } from '@campcadet/components/links/links.component';
+import { LoginSelectorComponent } from '@campcadet/components/login-selector/login-selector.component';
+import { MenuComponent } from '@campcadet/components/menu/menu.component';
+import { PreparationComponent } from '@campcadet/components/preparation/preparation.component';
+import { PrintComponent } from '@campcadet/components/print/print.component';
+import { PromoVideoComponent } from '@campcadet/components/promo-video/promo-video.component';
+import { RequiredItemsComponent } from '@campcadet/components/required-items/required-items.component';
+import { RulesComponent } from '@campcadet/components/rules/rules.component';
+import { WhatIsCampCadetComponent } from '@campcadet/components/what-is-camp-cadet/what-is-camp-cadet.component';
+
+// Admin
+import { BlurbComponent as AdminBlurbComponent } from '@campcadet/components/admin/blurb/blurb.component';
+import { BoardComponent as AdminBoardComponent } from '@campcadet/components/admin/board/board.component';
+import { CampDatesComponent as AdminCampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
+import { DonorsComponent as AdminDonorsComponent } from '@campcadet/components/admin/donors/donors.component';
+import { ItemsComponent as AdminItemsComponent } from '@campcadet/components/admin/items/items.component';
+import { LinksComponent as AdminLinksComponent } from '@campcadet/components/admin/links/links.component';
+import { QuestionsComponent as AdminQuestionsComponent } from '@campcadet/components/admin/questions/questions.component';
+import { RulesComponent as AdminRulesComponent } from '@campcadet/components/admin/rules/rules.component';
 //#endregion
 
 @NgModule({
@@ -44,10 +52,8 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         PipesModule
     ],
     declarations: [
-        BlurbComponent,
         BoardComponent,
         CallOfHonorComponent,
-        CampDatesComponent,
         CarouselComponent,
         ContactComponent,
         DataWaiterComponent,
@@ -68,13 +74,21 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         PromoVideoComponent,
         RequiredItemsComponent,
         RulesComponent,
-        WhatIsCampCadetComponent
+        WhatIsCampCadetComponent,
+
+        // Admin components
+        AdminBlurbComponent,
+        AdminBoardComponent,
+        AdminCampDatesComponent,
+        AdminDonorsComponent,
+        AdminItemsComponent,
+        AdminLinksComponent,
+        AdminQuestionsComponent,
+        AdminRulesComponent
     ],
     exports: [
-        BlurbComponent,
         BoardComponent,
         CallOfHonorComponent,
-        CampDatesComponent,
         CarouselComponent,
         ContactComponent,
         DataWaiterComponent,
@@ -95,15 +109,31 @@ import { WhatIsCampCadetComponent } from './../components/what-is-camp-cadet/wha
         PromoVideoComponent,
         RequiredItemsComponent,
         RulesComponent,
-        WhatIsCampCadetComponent
+        WhatIsCampCadetComponent,
+
+        // Admin components
+        AdminBlurbComponent,
+        AdminBoardComponent,
+        AdminCampDatesComponent,
+        AdminDonorsComponent,
+        AdminItemsComponent,
+        AdminLinksComponent,
+        AdminQuestionsComponent,
+        AdminRulesComponent
     ],
     entryComponents: [
         ContactComponent,
         LoginSelectorComponent,
 
         // Admin components
-        BlurbComponent,
-        CampDatesComponent
+        AdminBlurbComponent,
+        AdminBoardComponent,
+        AdminCampDatesComponent,
+        AdminDonorsComponent,
+        AdminItemsComponent,
+        AdminLinksComponent,
+        AdminQuestionsComponent,
+        AdminRulesComponent
     ]
 })
 export class ComponentsModule { }

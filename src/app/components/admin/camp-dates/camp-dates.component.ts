@@ -1,9 +1,9 @@
 import { ToastsManager } from 'ng2-toastr';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CampDates } from './../../../model/camp-dates';
+import { CampDates } from '@campcadet/model/camp-dates';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { DateService } from './../../../services/date.service';
+import { DateService } from '@campcadet/services/date.service';
 
 @Component({
   selector: 'cc-camp-dates',

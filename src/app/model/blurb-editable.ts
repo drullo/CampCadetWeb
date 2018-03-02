@@ -1,5 +1,5 @@
-import { AuthenticationService } from './../services/authentication.service';
-import { BlurbComponent } from './../components/admin/blurb/blurb.component';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
+import { BlurbComponent } from '@campcadet/components/admin/blurb/blurb.component';
 import { MatDialog } from '@angular/material/dialog';
 
 export class BlurbEditable {

@@ -1,32 +1,32 @@
-import { CampDatesComponent } from './../admin/camp-dates/camp-dates.component';
-import { AuthenticationService } from './../../services/authentication.service';
+import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
 //#region Imports
 import { Component, OnInit, ViewContainerRef, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastsManager } from 'ng2-toastr';
 import * as moment from 'moment';
-import { environment } from './../../../environments/environment';
+import { environment } from '@environment/environment';
 
-import { ApplicationsService } from './../../services/applications.service';
-import { DataService } from './../../services/data.service';
+import { ApplicationsService } from '@campcadet/services/applications.service';
+import { DataService } from '@campcadet/services/data.service';
 
-import { BoardComponent } from './../board/board.component';
-import { CallOfHonorComponent } from './../call-of-honor/call-of-honor.component';
-import { ContactComponent } from './../contact/contact.component';
-import { DonateComponent } from './../donate/donate.component';
-import { DonorsComponent } from './../donors/donors.component';
-import { EnrollmentComponent } from './../enrollment/enrollment.component';
-import { FAQComponent } from './../faq/faq.component';
-import { HistoryComponent } from './../history/history.component';
-import { HomeComponent } from './../home/home.component';
-import { LinksComponent } from './../links/links.component';
-import { PreparationComponent } from './../preparation/preparation.component';
-import { RequiredItemsComponent } from './../required-items/required-items.component';
-import { RulesComponent } from '../rules/rules.component';
+import { BoardComponent } from '@campcadet/components/board/board.component';
+import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
+import { ContactComponent } from '@campcadet/components/contact/contact.component';
+import { DonateComponent } from '@campcadet/components/donate/donate.component';
+import { DonorsComponent } from '@campcadet/components/donors/donors.component';
+import { EnrollmentComponent } from '@campcadet/components/enrollment/enrollment.component';
+import { FAQComponent } from '@campcadet/components/faq/faq.component';
+import { HistoryComponent } from '@campcadet/components/history/history.component';
+import { HomeComponent } from '@campcadet/components/home/home.component';
+import { LinksComponent } from '@campcadet/components/links/links.component';
+import { PreparationComponent } from '@campcadet/components/preparation/preparation.component';
+import { RequiredItemsComponent } from '@campcadet/components/required-items/required-items.component';
+import { RulesComponent } from '@campcadet/components/rules/rules.component';
 
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
-import { LoginSelectorComponent } from '../login-selector/login-selector.component';
+import { LoginSelectorComponent } from '@campcadet/components/login-selector/login-selector.component';
 //#endregion
 
 @Component({

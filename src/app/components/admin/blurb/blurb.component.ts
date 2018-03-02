@@ -1,8 +1,8 @@
 import { ToastsManager } from 'ng2-toastr';
-import { BlurbsService } from './../../../services/blurbs.service';
-import { Blurb } from './../../../model/blurb';
+import { BlurbsService } from '@campcadet/services/blurbs.service';
+import { Blurb } from '@campcadet/model/blurb';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DataService } from './../../../services/data.service';
+import { DataService } from '@campcadet/services/data.service';
 import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 

@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 import * as moment from 'moment';
 
-import { Blurb } from './../model/blurb';
-import { BoardMember } from './../model/board-member';
-import { CampDates } from './../model/camp-dates';
-import { ConfigSetting } from './../model/config-setting';
-import { DonorCategoryLink } from './../model/donor-category-link';
-import { DonorLevel } from './../model/donor-level';
-import { Faq } from './../model/faq';
-import { Link } from './../model/link';
-import { Requirement } from './../model/requirement';
-import { RequiredItem } from './../model/required-item';
-import { SimpleItem } from './../model/simple-item';
+import { Blurb } from '@campcadet/model/blurb';
+import { BoardMember } from '@campcadet/model/board-member';
+import { CampDates } from '@campcadet/model/camp-dates';
+import { ConfigSetting } from '@campcadet/model/config-setting';
+import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
+import { DonorLevel } from '@campcadet/model/donor-level';
+import { Faq } from '@campcadet/model/faq';
+import { Link } from '@campcadet/model/link';
+import { Requirement } from '@campcadet/model/requirement';
+import { RequiredItem } from '@campcadet/model/required-item';
+import { SimpleItem } from '@campcadet/model/simple-item';
 
-import { BlurbsService } from './blurbs.service';
-import { BoardService } from './board.service';
-import { CarouselService } from './carousel.service';
-import { ConfigService } from './config.service';
-import { ContactService } from './contact.service';
-import { DateService } from './date.service';
-import { DonorsService } from './donors.service';
-import { FaqService } from './faq.service';
-import { LinksService } from './links.service';
-import { RequirementsService } from './requirements.service';
-import { RequiredItemsService } from './required-items.service';
-import { RulesService } from './rules.service';
+import { BlurbsService } from '@campcadet/services/blurbs.service';
+import { BoardService } from '@campcadet/services/board.service';
+import { CarouselService } from '@campcadet/services/carousel.service';
+import { ConfigService } from '@campcadet/services/config.service';
+import { ContactService } from '@campcadet/services/contact.service';
+import { DateService } from '@campcadet/services/date.service';
+import { DonorsService } from '@campcadet/services/donors.service';
+import { FaqService } from '@campcadet/services/faq.service';
+import { LinksService } from '@campcadet/services/links.service';
+import { RequirementsService } from '@campcadet/services/requirements.service';
+import { RequiredItemsService } from '@campcadet/services/required-items.service';
+import { RulesService } from '@campcadet/services/rules.service';
 
 @Injectable()
 export class DataService {

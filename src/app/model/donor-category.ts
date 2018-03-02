@@ -1,4 +1,4 @@
-import { SimpleItem } from './simple-item';
+import { SimpleItem } from '@campcadet/model/simple-item';
 
 export interface DonorCategory extends SimpleItem {
     enabled: boolean;

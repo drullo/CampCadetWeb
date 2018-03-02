@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
-import { SimpleItem } from './../model/simple-item';
-import { Email } from './../model/email';
+import { environment } from '@environment/environment';
+import { SimpleItem } from '@campcadet/model/simple-item';
+import { Email } from '@campcadet/model/email';
 
 @Injectable()
 export class ContactService {

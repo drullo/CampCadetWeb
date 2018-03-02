@@ -1,10 +1,10 @@
-import { DataService } from './../../services/data.service';
-import { ContactService } from './../../services/contact.service';
+import { DataService } from '@campcadet/services/data.service';
+import { ContactService } from '@campcadet/services/contact.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Email } from './../../model/email';
-import { FormErrorState } from '../../model/form-error-state';
+import { Email } from '@campcadet/model/email';
+import { FormErrorState } from '@campcadet/model/form-error-state';
 
 @Component({
   selector: 'cc-contact',

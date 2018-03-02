@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SimpleItem } from './../model/simple-item';
+import { SimpleItem } from '@campcadet/model/simple-item';
 
-import { environment } from './../../environments/environment';
+import { environment } from '@environment/environment';
 
 @Injectable()
 export class RulesService {
