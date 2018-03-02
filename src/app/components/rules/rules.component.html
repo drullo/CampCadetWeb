@@ -11,9 +11,12 @@
 
     <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
+    <!--
+      These are now embedded right into the blurb
     <ul>
       <li *ngFor="let i of dataService.rules" [innerHTML]="i.description"></li>
     </ul>
+  -->
 
     <div id="print">
       <a [routerLink]="['/print', 'rules']" target="_blank">

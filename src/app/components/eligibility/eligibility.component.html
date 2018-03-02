@@ -5,7 +5,9 @@
   </div>
   <div id="blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
-  <ul>
+  <!--
+    These are now embedded right into the blurb
+    <ul>
     <li *ngFor="let i of dataService.requirements" [innerHTML]="i.requirement"></li>
-  </ul>
+  </ul>-->
 </div>

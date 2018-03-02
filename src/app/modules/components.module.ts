@@ -38,10 +38,8 @@ import { BlurbComponent as AdminBlurbComponent } from '@campcadet/components/adm
 import { BoardComponent as AdminBoardComponent } from '@campcadet/components/admin/board/board.component';
 import { CampDatesComponent as AdminCampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
 import { DonorsComponent as AdminDonorsComponent } from '@campcadet/components/admin/donors/donors.component';
-import { ItemsComponent as AdminItemsComponent } from '@campcadet/components/admin/items/items.component';
 import { LinksComponent as AdminLinksComponent } from '@campcadet/components/admin/links/links.component';
 import { QuestionsComponent as AdminQuestionsComponent } from '@campcadet/components/admin/questions/questions.component';
-import { RulesComponent as AdminRulesComponent } from '@campcadet/components/admin/rules/rules.component';
 //#endregion
 
 @NgModule({
@@ -83,10 +81,8 @@ import { RulesComponent as AdminRulesComponent } from '@campcadet/components/adm
         AdminBoardComponent,
         AdminCampDatesComponent,
         AdminDonorsComponent,
-        AdminItemsComponent,
         AdminLinksComponent,
-        AdminQuestionsComponent,
-        AdminRulesComponent
+        AdminQuestionsComponent
     ],
     exports: [
         BoardComponent,
@@ -118,10 +114,8 @@ import { RulesComponent as AdminRulesComponent } from '@campcadet/components/adm
         AdminBoardComponent,
         AdminCampDatesComponent,
         AdminDonorsComponent,
-        AdminItemsComponent,
         AdminLinksComponent,
-        AdminQuestionsComponent,
-        AdminRulesComponent
+        AdminQuestionsComponent
     ],
     entryComponents: [
         ContactComponent,
@@ -132,10 +126,8 @@ import { RulesComponent as AdminRulesComponent } from '@campcadet/components/adm
         AdminBoardComponent,
         AdminCampDatesComponent,
         AdminDonorsComponent,
-        AdminItemsComponent,
         AdminLinksComponent,
-        AdminQuestionsComponent,
-        AdminRulesComponent
+        AdminQuestionsComponent
     ]
 })
 export class ComponentsModule { }

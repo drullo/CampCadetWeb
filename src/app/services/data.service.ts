@@ -26,9 +26,9 @@ import { DateService } from '@campcadet/services/date.service';
 import { DonorsService } from '@campcadet/services/donors.service';
 import { FaqService } from '@campcadet/services/faq.service';
 import { LinksService } from '@campcadet/services/links.service';
-import { RequirementsService } from '@campcadet/services/requirements.service';
-import { RequiredItemsService } from '@campcadet/services/required-items.service';
-import { RulesService } from '@campcadet/services/rules.service';
+// import { RequirementsService } from '@campcadet/services/requirements.service';
+// import { RequiredItemsService } from '@campcadet/services/required-items.service';
+// import { RulesService } from '@campcadet/services/rules.service';
 //#endregion
 
 @Injectable()
@@ -43,13 +43,13 @@ export class DataService {
   donorCatLinks: DonorCategoryLink[];
   donorCategories: SimpleItem[];
   donorLevels: DonorLevel[];
-  requirements: Requirement[];
+  // requirements: Requirement[];
   faqs: Faq[];
   faqCategories: SimpleItem[];
   links: Link[];
   linkCategories: SimpleItem[];
-  requiredItems: RequiredItem[];
-  rules: SimpleItem[];
+  // requiredItems: RequiredItem[];
+  // rules: SimpleItem[];
   contactTypes: SimpleItem[];
   contactReasons: SimpleItem[];
   boardDirectors: BoardMember[];
@@ -63,10 +63,7 @@ export class DataService {
     private dateService: DateService,
     private donorService: DonorsService,
     private faqService: FaqService,
-    private linkService: LinksService,
-    private requirementsService: RequirementsService,
-    private requiredItemsService: RequiredItemsService,
-    private rulesService: RulesService) {
+    private linkService: LinksService) {
 
   }
 
@@ -174,11 +171,11 @@ export class DataService {
     });
 
     // Eligibility requirements
-    this.requirementsService.getRequirements()
+    /*this.requirementsService.getRequirements()
       .subscribe(data => {
         this.requirements = data;
         this.afterDataRetrieved();
-      });
+      });*/
 
     // FAQs
     this.faqService.getFaqs().subscribe(data => {
@@ -233,18 +230,18 @@ export class DataService {
     });
 
     // Required items
-    this.requiredItemsService.getItems()
+    /*this.requiredItemsService.getItems()
       .subscribe(data => {
         this.requiredItems = data;
         this.afterDataRetrieved();
-      });
+      });*/
 
     // Rules
-    this.rulesService.getRules()
+    /*this.rulesService.getRules()
       .subscribe(data => {
         this.rules = data;
         this.afterDataRetrieved();
-      });
+      });*/
 
     this.configService.getAllSettings().subscribe(data => {
       this.configSettings = data;
@@ -268,9 +265,9 @@ export class DataService {
       !this.faqs ||
       !this.links ||
       !this.linkCategories ||
-      !this.requirements ||
-      !this.requiredItems ||
-      !this.rules ||
+      // !this.requirements ||
+      // !this.requiredItems ||
+      // !this.rules ||
       !this.configSettings) {
       return;
     }

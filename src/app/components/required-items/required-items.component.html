@@ -11,9 +11,11 @@
 
     <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
-    <ul>
+    <!--
+      These are now embedded right into the blurb
+      <ul>
       <li *ngFor="let i of dataService.requiredItems" [innerHTML]="i.item"></li>
-    </ul>
+    </ul>-->
 
     <div id="print">
       <a [routerLink]="['/print', 'required-items']" target="_blank">
