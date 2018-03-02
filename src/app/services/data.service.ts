@@ -12,8 +12,8 @@ import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
 import { DonorLevel } from '@campcadet/model/donor-level';
 import { Faq } from '@campcadet/model/faq';
 import { Link } from '@campcadet/model/link';
-import { Requirement } from '@campcadet/model/requirement';
-import { RequiredItem } from '@campcadet/model/required-item';
+// import { Requirement } from '@campcadet/model/requirement';
+// import { RequiredItem } from '@campcadet/model/required-item';
 import { SimpleItem } from '@campcadet/model/simple-item';
 
 // Services
