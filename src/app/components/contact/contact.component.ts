@@ -29,36 +29,37 @@ export class ContactComponent {
   matcher = new FormErrorState();
 
   sendToDirectors = false;
-  forcedRecipients = [
-    'rullo.dan@gmail.com',
-    'drullo@cleavelandprice.com']; // Send to these addresses no matter what
+  // forcedRecipients = ['rullo.dan@gmail.com','drullo@cleavelandprice.com']; // Send to these addresses no matter what
   //#endregion
 
   constructor(
     private contactService: ContactService,
     public dataService: DataService,
-    public dialogRef: MatDialogRef<ContactComponent>) { }
+    public dialogRef: MatDialogRef<ContactComponent>) {
+
+  }
 
   sendEmail(): void {
+    // 'relay-hosting.secureserver.net', // 'smtp.gmail.com',
     const email: Email = {
-      server: 'relay-hosting.secureserver.net', // 'smtp.gmail.com',
-      smtpPort: 25,
-      useSsl: false, // true,
-      priority: 0,
-      subject: 'Camp Cadet website inquiry',
+      server: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailservergodaddy').value,
+      smtpPort: +this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailsmtpport').value,
+      useSsl: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailusessl').value === 'true' ?
+        true : false,
+      priority: +this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailpriority').value,
+      subject: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'contactformsubject').value,
       sender: {
-        displayName: 'Camp Cadet Website',
-        emailAddress: 'WestmorelandCampCadet@gmail.com',
-        // userName: 'WestmorelandCampCadet@gmail.com',
-        // password: 'campcadet1'
+        displayName: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailfromname').value,
+        emailAddress: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailfrom').value
       },
-      recipients: {
-        to: []
-      },
+      recipients: { to: [] },
       content: {
         html: `<html><head><style>${this.getStyle()}</style></head><body>${this.getFormData()}</body></html>`
       }
     };
+
+    const forcedRecipients = this.dataService.configSettings.find(d => d.description.toLowerCase() === 'contactformrecipients')
+      .value.split(';');
 
     // Send email to all board directors?
     if (this.sendToDirectors) {
@@ -69,11 +70,13 @@ export class ContactComponent {
     }
 
     // Send email to any forced email addresses
-    this.forcedRecipients.forEach(address => {
-      if (email.recipients.to.indexOf(address) === -1) {
-        email.recipients.to.push(address);
-      }
-    });
+    if (forcedRecipients && forcedRecipients.length) {
+      forcedRecipients.forEach(address => {
+        if (email.recipients.to.indexOf(address) === -1) {
+          email.recipients.to.push(address);
+        }
+      });
+    }
 
     this.contactService.sendEmail(email)
       .subscribe(() => this.dialogRef.close(true),

@@ -3,7 +3,7 @@ import { BlurbComponent } from '@campcadet/components/admin/blurb/blurb.componen
 import { MatDialog } from '@angular/material/dialog';
 
 export class BlurbEditable {
-    constructor(private dialog: MatDialog, private authenticationService: AuthenticationService) {
+    constructor(private dialog: MatDialog, public authenticationService: AuthenticationService) {
 
     }
 

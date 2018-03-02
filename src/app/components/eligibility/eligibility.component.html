@@ -1,6 +1,9 @@
-<div id="parent" *ngIf="dataService.dataReady" (click)="editBlurb(blurbName)">
-  <div id="title">{{ title }}</div>
-  <div id="blurb" [innerHTML]="blurbName | blurb"></div>
+<div id="parent" *ngIf="dataService.dataReady">
+  <div id="title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+    <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+    {{ title }}
+  </div>
+  <div id="blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
   <ul>
     <li *ngFor="let i of dataService.requirements" [innerHTML]="i.requirement"></li>

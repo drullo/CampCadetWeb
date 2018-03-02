@@ -4,9 +4,12 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+      {{ title }}
+    </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
     <mat-accordion *ngFor="let category of dataService.boardMemberCategories">
       <mat-expansion-panel expanded="true">
@@ -21,8 +24,7 @@
             {{ member.prefix }}
           </span>
           <span class="name">
-            {{ member.firstName }}
-            {{ member.lastName }}
+            {{ member.firstName }} {{ member.lastName }}
           </span>
           <span *ngIf="member.title" class="title">
             ({{ member.title }})

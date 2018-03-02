@@ -4,17 +4,20 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+      {{ title }}
+    </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
     <div id="print">
-        <a [routerLink]="['/print', 'enrollment']" target="_blank">
-          <button mat-raised-button color="primary">
-            <mat-icon>print</mat-icon>
-            Print
-          </button>
-        </a>
-      </div>
+      <a [routerLink]="['/print', 'enrollment']" target="_blank">
+        <button mat-raised-button color="primary">
+          <mat-icon>print</mat-icon>
+          Print
+        </button>
+      </a>
+    </div>
   </div>
 </div>

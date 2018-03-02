@@ -4,9 +4,12 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+      {{ title }}
+    </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
     <ul>
       <li *ngFor="let i of dataService.requiredItems" [innerHTML]="i.item"></li>

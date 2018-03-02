@@ -15,7 +15,7 @@ export class PreparationComponent extends BlurbEditable {
 
   constructor(public dataService: DataService,
     dialog: MatDialog,
-    authenticationService: AuthenticationService) {
+    public authenticationService: AuthenticationService) {
       super(dialog, authenticationService);
   }
 }

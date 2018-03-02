@@ -3,23 +3,26 @@
 <cc-data-waiter></cc-data-waiter>
 
 <div id="parent" class="page-background" *ngIf="dataService.dataReady">
-    <div>
-      <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}</div>
-  
-      <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
-  
-      <mat-accordion *ngFor="let category of dataService.linkCategories">
-        <mat-expansion-panel expanded="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title class="category">
-              {{ category.description }}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-  
-          <div class="expansion-body" *ngFor="let link of dataService.links | linkForCategory:category">
-            <a [href]="link.url" target="_blank">{{ link.description }}</a>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+  <div>
+    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+      {{ title }}
     </div>
+
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
+
+    <mat-accordion *ngFor="let category of dataService.linkCategories">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="category">
+            {{ category.description }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion-body" *ngFor="let link of dataService.links | linkForCategory:category">
+          <a [href]="link.url" target="_blank">{{ link.description }}</a>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
+</div>

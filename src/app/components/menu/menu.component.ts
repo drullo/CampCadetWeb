@@ -1,3 +1,5 @@
+import { ContactService } from '@campcadet/services/contact.service';
+import { Email } from './../../model/email';
 import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
 import { AuthenticationService } from '@campcadet/services/authentication.service';
 //#region Imports
@@ -69,6 +71,7 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     private vcr: ViewContainerRef,
     public dataService: DataService,
     private socialAuthService: AuthService,
+    private contactService: ContactService,
     private authenticationService: AuthenticationService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -169,6 +172,43 @@ export class MenuComponent implements OnInit, AfterViewChecked {
             this.toastr.success('Successfully logged in');
           } else {
             this.toastr.error('Sorry, you are not an approved administrator', 'Login Denied');
+
+            const email: Email = {
+              server: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailservergodaddy').value,
+              smtpPort: +this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailsmtpport').value,
+              useSsl: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailusessl').value === 'true' ?
+                true : false,
+              priority: +this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailpriority').value,
+              subject: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'unauthorizedloginsubject').value,
+              sender: {
+                displayName: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailfromname').value,
+                emailAddress: this.dataService.configSettings.find(d => d.description.toLowerCase() === 'emailfrom').value
+              },
+              recipients: { to: [] },
+              content: {
+                html: `<html><body>
+                  <div>platform: ${socialPlatform}</div>
+                  <div>id: ${userData.id}</div>
+                  <div>name: ${userData.name}</div>
+                  <div>image: ${userData.image}</div>
+                  <div>email: ${userData.email}</div>
+                </body></html>`
+              }
+            };
+
+            // Send email to any forced email addresses
+            const forcedRecipients = this.dataService.configSettings.find(d => d.description.toLowerCase() === 'contactformrecipients')
+              .value.split(';');
+
+            if (forcedRecipients && forcedRecipients.length) {
+              forcedRecipients.forEach(address => {
+                if (email.recipients.to.indexOf(address) === -1) {
+                  email.recipients.to.push(address);
+                }
+              });
+            }
+
+            this.contactService.sendEmail(email).subscribe();
           }
         }
         )

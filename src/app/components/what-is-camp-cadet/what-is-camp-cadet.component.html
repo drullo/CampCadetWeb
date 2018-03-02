@@ -1,8 +1,11 @@
 <cc-data-waiter></cc-data-waiter>
 
 <div id="parent" *ngIf="dataService.dataReady && blurbName | blurb" class="dark-bg">
-  <div class="page-title" (click)="editBlurb(blurbName)">{{ title }}?</div>
-  <div id="blurb" (click)="editBlurb(blurbName)">
+  <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
+    <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+    {{ title }}?
+  </div>
+  <div id="blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
     <img src="/assets/badge.png" alt="">
     <span [innerHTML]="'What is Camp Cadet' | blurb"></span>
   </div>

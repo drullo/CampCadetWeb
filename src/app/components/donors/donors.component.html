@@ -4,9 +4,12 @@
 
 <div id="parent" class="page-background" *ngIf="dataService.dataReady">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)" *ngFor="let category of dataService.donorCategories">{{ category.description }}</div>
+    <div class="page-title" (click)="editBlurb(blurbName)" *ngFor="let category of dataService.donorCategories" [class.editable]="authenticationService.loggedIn">
+      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+      {{ category.description }}
+    </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)"></div>
+    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
 
     <mat-accordion *ngFor="let level of dataService.donorLevels">
       <mat-expansion-panel expanded="true">
@@ -28,6 +31,9 @@
       </mat-expansion-panel>
     </mat-accordion>
 
-    <div [innerHTML]="blurbNameBottom | blurb" (click)="editBlurb(blurbNameBottom)"></div>
+    <div (click)="editBlurb(blurbNameBottom)" [class.editable]="authenticationService.loggedIn">
+        <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+        <span [innerHTML]="blurbNameBottom | blurb"></span>
+    </div>
   </div>
 </div>
