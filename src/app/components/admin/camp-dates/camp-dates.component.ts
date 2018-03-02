@@ -1,9 +1,11 @@
-import { ToastsManager } from 'ng2-toastr';
+//#region Imports
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastsManager } from 'ng2-toastr';
 import { CampDates } from '@campcadet/model/camp-dates';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { DateService } from '@campcadet/services/date.service';
+//#endregion
 
 @Component({
   selector: 'cc-camp-dates',
@@ -11,10 +13,13 @@ import { DateService } from '@campcadet/services/date.service';
   styleUrls: ['./camp-dates.component.css']
 })
 export class CampDatesComponent implements OnInit {
+  //#region Fields
   selectedTabIndex = 0;
   campDates: CampDates[];
   updateRecord: CampDates;
+  //#endregion
 
+  //#region Lifecycle
   constructor(private dateService: DateService,
     public dialogRef: MatDialogRef<CampDatesComponent>,
     private toastr: ToastsManager,
@@ -25,8 +30,10 @@ export class CampDatesComponent implements OnInit {
   ngOnInit() {
     this.refreshData();
   }
+  //#endregion
 
-  refreshData(): void {
+  //#region Utilities
+  private refreshData(): void {
     this.dateService.getAll().subscribe(data => this.campDates = data.sort((a, b) => {
       if (a.startDate > b.startDate) { return -1; }
       if (a.startDate < b.startDate) { return 1; }
@@ -78,4 +85,5 @@ export class CampDatesComponent implements OnInit {
       console.log(err);
     });
   }
+  //#endregion
 }

@@ -1,6 +1,8 @@
-import { SimpleItem } from '@campcadet/model/simple-item';
-import { Faq } from '@campcadet/model/faq';
+//#region Imports
 import { Pipe, PipeTransform } from '@angular/core';
+import { Faq } from '@campcadet/model/faq';
+import { SimpleItem } from '@campcadet/model/simple-item';
+//#endregion
 
 @Pipe({
   name: 'faqForCategory'

@@ -1,13 +1,14 @@
+//#region Imports
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '@environment/environment';
 import { Observable } from 'rxjs/Observable';
 import { RequiredItem } from '@campcadet/model/required-item';
-
-import { environment } from '@environment/environment';
+//#endregion
 
 @Injectable()
 export class RequiredItemsService {
-  url = `${environment.apiUrl}/api/campsupplies`;
+  private url = `${environment.apiUrl}/api/campsupplies`;
 
   constructor(private http: HttpClient) { }
 

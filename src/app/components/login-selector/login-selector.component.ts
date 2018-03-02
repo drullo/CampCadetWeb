@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,11 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './login-selector.component.html',
   styleUrls: ['./login-selector.component.css']
 })
-export class LoginSelectorComponent implements OnInit {
+export class LoginSelectorComponent {
 
   constructor(public dialogRef: MatDialogRef<LoginSelectorComponent>) { }
-
-  ngOnInit() {
-  }
-
 }

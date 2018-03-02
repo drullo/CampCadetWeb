@@ -1,10 +1,12 @@
-import { ToastsManager } from 'ng2-toastr';
-import { BlurbsService } from '@campcadet/services/blurbs.service';
-import { Blurb } from '@campcadet/model/blurb';
-import { MatDialogRef } from '@angular/material/dialog';
-import { DataService } from '@campcadet/services/data.service';
+//#region Imports
 import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ToastsManager } from 'ng2-toastr';
+import { Blurb } from '@campcadet/model/blurb';
+import { BlurbsService } from '@campcadet/services/blurbs.service';
+import { DataService } from '@campcadet/services/data.service';
+//#endregion
 
 @Component({
   selector: 'cc-blurb',
@@ -15,6 +17,7 @@ export class BlurbComponent implements OnInit {
   blurbName: string;
   blurb: Blurb;
 
+  //#region Lifecycle
   constructor(private dataService: DataService,
     private blurbService: BlurbsService,
     public dialogRef: MatDialogRef<BlurbComponent>,
@@ -30,6 +33,7 @@ export class BlurbComponent implements OnInit {
     this.blurb = this.dataService.blurbs
       .find(blurb => blurb.name.toLowerCase() === this.blurbName.toLowerCase());
   }
+  //#endregion
 
   update(): void {
     this.blurbService.update(this.blurb).subscribe(() => {

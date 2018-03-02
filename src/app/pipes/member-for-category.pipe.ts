@@ -1,6 +1,8 @@
+//#region Imports
+import { Pipe, PipeTransform } from '@angular/core';
 import { BoardMember } from '@campcadet/model/board-member';
 import { SimpleItem } from '@campcadet/model/simple-item';
-import { Pipe, PipeTransform } from '@angular/core';
+//#endregion
 
 @Pipe({
   name: 'memberForCategory'

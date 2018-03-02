@@ -1,3 +1,4 @@
+//#region Imports
 // Angular
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,12 +13,14 @@ import { CustomToastOptions } from '@campcadet/model/custom-toast-options';
 // Social login
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, } from 'angular5-social-login';
 
+// Modules
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicesModule } from '@campcadet/modules/services.module';
 import { ComponentsModule } from '@campcadet/modules/components.module';
+//#endregion
 
-// Configs
+// Social login configs
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
     [

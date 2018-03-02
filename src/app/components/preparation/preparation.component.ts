@@ -1,8 +1,10 @@
-import { AuthenticationService } from '@campcadet/services/authentication.service';
-import { MatDialog } from '@angular/material/dialog';
-import { BlurbEditable } from '@campcadet/model/blurb-editable';
+//#region Imports
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
+import { BlurbEditable } from '@campcadet/model/blurb-editable';
 import { DataService } from '@campcadet/services/data.service';
+//#endregion
 
 @Component({
   selector: 'cc-preparation',

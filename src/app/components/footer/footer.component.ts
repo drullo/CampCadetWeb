@@ -1,9 +1,11 @@
+//#region Imports
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastsManager } from 'ng2-toastr';
 import * as moment from 'moment';
 import { ContactComponent } from '@campcadet/components/contact/contact.component';
-import { ToastsManager } from 'ng2-toastr';
 import { DataService } from '@campcadet/services/data.service';
+//#endregion
 
 @Component({
   selector: 'cc-footer',

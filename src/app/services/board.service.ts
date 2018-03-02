@@ -1,12 +1,14 @@
-import { BoardMember } from '@campcadet/model/board-member';
+//#region Imports
 import { Injectable } from '@angular/core';
-import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '@environment/environment';
 import { Observable } from 'rxjs/Observable';
+import { BoardMember } from '@campcadet/model/board-member';
+//#endregion
 
 @Injectable()
 export class BoardService {
-  url = `${environment.apiUrl}/api/members`;
+  private url = `${environment.apiUrl}/api/members`;
 
   constructor(private http: HttpClient) { }
 

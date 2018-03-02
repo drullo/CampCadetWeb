@@ -5,5 +5,4 @@ export class AuthenticationService {
   loggedIn: boolean;
 
   constructor() { }
-
 }

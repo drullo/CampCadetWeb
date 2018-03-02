@@ -1,13 +1,14 @@
+//#region Imports
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Blurb } from '@campcadet/model/blurb';
-
 import { environment } from '@environment/environment';
+//#endregion
 
 @Injectable()
 export class BlurbsService {
-  url = `${environment.apiUrl}/api/blurbs`;
+  private url = `${environment.apiUrl}/api/blurbs`;
 
   constructor(private http: HttpClient) { }
 

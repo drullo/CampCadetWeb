@@ -1,10 +1,13 @@
-import { DataService } from '@campcadet/services/data.service';
-import { ContactService } from '@campcadet/services/contact.service';
+//#region Imports
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+
+import { DataService } from '@campcadet/services/data.service';
+import { ContactService } from '@campcadet/services/contact.service';
 import { Email } from '@campcadet/model/email';
 import { FormErrorState } from '@campcadet/model/form-error-state';
+//#endregion
 
 @Component({
   selector: 'cc-contact',
@@ -28,8 +31,7 @@ export class ContactComponent {
   //#endregion
   matcher = new FormErrorState();
 
-  sendToDirectors = false;
-  // forcedRecipients = ['rullo.dan@gmail.com','drullo@cleavelandprice.com']; // Send to these addresses no matter what
+  private sendToDirectors = false;
   //#endregion
 
   constructor(

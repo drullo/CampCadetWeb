@@ -1,6 +1,8 @@
+//#region Imports
+import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '@campcadet/services/authentication.service';
 import { BlurbComponent } from '@campcadet/components/admin/blurb/blurb.component';
-import { MatDialog } from '@angular/material/dialog';
+//#endregion
 
 export class BlurbEditable {
     constructor(private dialog: MatDialog, public authenticationService: AuthenticationService) {

@@ -1,12 +1,13 @@
+//#region Imports
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-
 import { environment } from '@environment/environment';
+import { Observable } from 'rxjs/Observable';
+//#endregion
 
 @Injectable()
 export class CarouselService {
-  url = `${environment.apiUrl}/api/images/banner`;
+  private url = `${environment.apiUrl}/api/images/banner`;
 
   constructor(private http: HttpClient) { }
 

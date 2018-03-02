@@ -1,20 +1,24 @@
-import { ContactService } from '@campcadet/services/contact.service';
-import { Email } from './../../model/email';
-import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
-import { AuthenticationService } from '@campcadet/services/authentication.service';
 //#region Imports
 import { Component, OnInit, ViewContainerRef, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastsManager } from 'ng2-toastr';
-import * as moment from 'moment';
 import { environment } from '@environment/environment';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
+import * as moment from 'moment';
 
+import { Email } from './../../model/email';
+
+// Services
 import { ApplicationsService } from '@campcadet/services/applications.service';
+import { AuthenticationService } from '@campcadet/services/authentication.service';
 import { DataService } from '@campcadet/services/data.service';
+import { ContactService } from '@campcadet/services/contact.service';
 
+// Components
 import { BoardComponent } from '@campcadet/components/board/board.component';
 import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
+import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
 import { ContactComponent } from '@campcadet/components/contact/contact.component';
 import { DonateComponent } from '@campcadet/components/donate/donate.component';
 import { DonorsComponent } from '@campcadet/components/donors/donors.component';
@@ -23,12 +27,10 @@ import { FAQComponent } from '@campcadet/components/faq/faq.component';
 import { HistoryComponent } from '@campcadet/components/history/history.component';
 import { HomeComponent } from '@campcadet/components/home/home.component';
 import { LinksComponent } from '@campcadet/components/links/links.component';
+import { LoginSelectorComponent } from '@campcadet/components/login-selector/login-selector.component';
 import { PreparationComponent } from '@campcadet/components/preparation/preparation.component';
 import { RequiredItemsComponent } from '@campcadet/components/required-items/required-items.component';
 import { RulesComponent } from '@campcadet/components/rules/rules.component';
-
-import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
-import { LoginSelectorComponent } from '@campcadet/components/login-selector/login-selector.component';
 //#endregion
 
 @Component({
@@ -127,6 +129,7 @@ export class MenuComponent implements OnInit, AfterViewChecked {
   }
   //#endregion
 
+  //#region Utilities
   contact(): void {
     this.dialog.open(ContactComponent)
       .afterClosed()
@@ -224,7 +227,7 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     this.toastr.success('Logged out');
   }
 
-  userIsAdmin(userEmail: string): boolean {
+  private userIsAdmin(userEmail: string): boolean {
     if (!this.dataService.configSettings || !userEmail) { return false; }
 
     const admins = this.dataService.configSettings
@@ -247,4 +250,5 @@ export class MenuComponent implements OnInit, AfterViewChecked {
         break;
     }
   }
+  //#endregion
 }

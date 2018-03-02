@@ -1,13 +1,15 @@
-import { Faq } from '@campcadet/model/faq';
+//#region Imports
 import { Injectable } from '@angular/core';
-import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '@environment/environment';
 import { Observable } from 'rxjs/Observable';
+import { Faq } from '@campcadet/model/faq';
 import { SimpleItem } from '@campcadet/model/simple-item';
+//#endregion
 
 @Injectable()
 export class FaqService {
-  url = `${environment.apiUrl}/api`;
+  private url = `${environment.apiUrl}/api`;
 
   constructor(private http: HttpClient) { }
 

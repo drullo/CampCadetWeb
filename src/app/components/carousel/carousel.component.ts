@@ -1,8 +1,10 @@
+//#region Imports
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '@campcadet/services/authentication.service';
 import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Component } from '@angular/core';
 import { DataService } from '@campcadet/services/data.service';
+//#endregion
 
 @Component({
   selector: 'cc-carousel',

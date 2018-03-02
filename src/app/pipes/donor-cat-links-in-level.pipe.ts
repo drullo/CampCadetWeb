@@ -1,6 +1,8 @@
+//#region Imports
+import { Pipe, PipeTransform } from '@angular/core';
 import { DonorLevel } from '@campcadet/model/donor-level';
 import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
-import { Pipe, PipeTransform } from '@angular/core';
+//#endregion
 
 @Pipe({
   name: 'donorCatLinksInLevel'

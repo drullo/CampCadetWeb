@@ -1,5 +1,5 @@
-import { DataService } from '@campcadet/services/data.service';
 import { Component } from '@angular/core';
+import { DataService } from '@campcadet/services/data.service';
 
 @Component({
   selector: 'cc-data-waiter',

@@ -1,7 +1,9 @@
+//#region Imports
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
 import * as moment from 'moment';
 
+// Model classes
 import { Blurb } from '@campcadet/model/blurb';
 import { BoardMember } from '@campcadet/model/board-member';
 import { CampDates } from '@campcadet/model/camp-dates';
@@ -14,6 +16,7 @@ import { Requirement } from '@campcadet/model/requirement';
 import { RequiredItem } from '@campcadet/model/required-item';
 import { SimpleItem } from '@campcadet/model/simple-item';
 
+// Services
 import { BlurbsService } from '@campcadet/services/blurbs.service';
 import { BoardService } from '@campcadet/services/board.service';
 import { CarouselService } from '@campcadet/services/carousel.service';
@@ -26,6 +29,7 @@ import { LinksService } from '@campcadet/services/links.service';
 import { RequirementsService } from '@campcadet/services/requirements.service';
 import { RequiredItemsService } from '@campcadet/services/required-items.service';
 import { RulesService } from '@campcadet/services/rules.service';
+//#endregion
 
 @Injectable()
 export class DataService {
@@ -248,7 +252,7 @@ export class DataService {
     });
   }
 
-  afterDataRetrieved(): void {
+  private afterDataRetrieved(): void {
     if (
       !this.blurbs ||
       !this.campDirector ||

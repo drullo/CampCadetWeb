@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+// Modules
 import { MaterialModule } from '@campcadet/modules/material.module';
 import { PipesModule } from '@campcadet/modules/pipes.module';
 
+// Components
 import { BoardComponent } from '@campcadet/components/board/board.component';
 import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
 import { CarouselComponent } from '@campcadet/components/carousel/carousel.component';
@@ -31,7 +33,7 @@ import { RequiredItemsComponent } from '@campcadet/components/required-items/req
 import { RulesComponent } from '@campcadet/components/rules/rules.component';
 import { WhatIsCampCadetComponent } from '@campcadet/components/what-is-camp-cadet/what-is-camp-cadet.component';
 
-// Admin
+// Admin components
 import { BlurbComponent as AdminBlurbComponent } from '@campcadet/components/admin/blurb/blurb.component';
 import { BoardComponent as AdminBoardComponent } from '@campcadet/components/admin/board/board.component';
 import { CampDatesComponent as AdminCampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';

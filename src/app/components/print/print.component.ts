@@ -1,9 +1,10 @@
-import { Observable } from 'rxjs/Observable';
+//#region Imports
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '@campcadet/services/data.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
-
+//#endregion
 @Component({
   selector: 'cc-print',
   templateUrl: './print.component.html',
@@ -26,5 +27,4 @@ export class PrintComponent implements OnInit {
         });
       });
   }
-
 }

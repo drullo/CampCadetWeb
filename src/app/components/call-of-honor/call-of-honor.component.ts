@@ -1,8 +1,10 @@
+//#region Imports
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '@campcadet/services/authentication.service';
 import { BlurbEditable } from '@campcadet/model/blurb-editable';
-import { MatDialog } from '@angular/material/dialog';
-import { Component } from '@angular/core';
 import { DataService } from '@campcadet/services/data.service';
+//#endregion
 
 @Component({
   selector: 'cc-call-of-honor',

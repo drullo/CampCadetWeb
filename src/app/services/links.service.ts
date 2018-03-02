@@ -1,12 +1,14 @@
+//#region Imports
 import { Injectable } from '@angular/core';
-import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '@environment/environment';
 import { Observable } from 'rxjs/Observable';
 import { Link } from '@campcadet/model/link';
+//#endregion
 
 @Injectable()
 export class LinksService {
-  url = `${environment.apiUrl}/api/links`;
+  private url = `${environment.apiUrl}/api/links`;
 
   constructor(private http: HttpClient) { }
 

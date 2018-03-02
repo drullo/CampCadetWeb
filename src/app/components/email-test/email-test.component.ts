@@ -1,6 +1,8 @@
+//#region Imports
+import { Component } from '@angular/core';
 import { ContactService } from '@campcadet/services/contact.service';
 import { Email } from '@campcadet/model/email';
-import { Component } from '@angular/core';
+//#endregion
 
 @Component({
   selector: 'cc-email-test',
