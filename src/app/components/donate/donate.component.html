@@ -4,12 +4,14 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
-      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div class="page-title">
+      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
       {{ title }}
     </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
 
     <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" #cartForm="ngForm" (ngSubmit)="paypalSubmit(cartForm, $event)">
       <input type="hidden" name="cmd" value="_s-xclick">
@@ -24,7 +26,7 @@
       </div>
       
       <mat-form-field>
-        <input #d type="number" matInput placeholder="Our Proceeds" (keyup)="calculateDonation($event.target.value)">
+        <input #d type="number" matInput placeholder="Our Proceeds" (keyup)="calculateDonation($event)"> <!-- .target.value -->
         <mat-hint>Amount you want us to receive</mat-hint>
         <span matPrefix>$&nbsp;</span>
         <span matSuffix>.00</span>

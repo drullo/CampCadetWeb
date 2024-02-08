@@ -1,23 +1,14 @@
-//#region Imports
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthenticationService } from '@campcadet/services/authentication.service';
-import { BlurbEditable } from '@campcadet/model/blurb-editable';
-import { DataService } from '@campcadet/services/data.service';
-//#endregion
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'cc-rules',
   templateUrl: './rules.component.html',
   styleUrls: ['./rules.component.css']
 })
-export class RulesComponent extends BlurbEditable {
+export class RulesComponent {
   title = 'Camp Rules';
   blurbName = 'Camp Rules Introduction';
 
-  constructor(public dataService: DataService,
-    dialog: MatDialog,
-    public authenticationService: AuthenticationService) {
-      super(dialog, authenticationService);
-    }
+  constructor(public dataService: DataService) {}
 }

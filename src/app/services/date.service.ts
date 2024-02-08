@@ -1,14 +1,14 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { CampDates } from '@campcadet/model/camp-dates';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { CampDates } from '../model/camp-dates';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DateService {
-  private url = `${environment.apiUrl}/api/campdates`;
+  private url = `${config.api}/api/campdates`;
 
   constructor(private http: HttpClient) { }
 

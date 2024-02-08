@@ -1,8 +1,6 @@
-//#region Imports
 import { Component } from '@angular/core';
-import { ContactService } from '@campcadet/services/contact.service';
-import { Email } from '@campcadet/model/email';
-//#endregion
+import { ContactService } from '../../services/contact.service';
+import { Email } from '../../model/email';
 
 @Component({
   selector: 'cc-email-test',
@@ -23,7 +21,7 @@ export class EmailTestComponent {
   recipients = 'drullo@cleavelandprice.com';
   content = 'testing...';
 
-  result: string;
+  result: string | undefined;
 
   constructor(private contactService: ContactService) { }
 
@@ -43,16 +41,18 @@ export class EmailTestComponent {
       }
     };
 
-    this.result = null;
+    this.result = undefined;
 
     this.contactService.sendEmail(email)
-      .subscribe(() => {
-        console.log('email sent');
-        this.result = 'good';
-      },
-        err => {
+      .subscribe({
+        complete: () => {
+          console.log('email sent');
+          this.result = 'good';
+        },
+        error: (err) => {
           console.log(err);
           this.result = 'bad';
-        });
+        }
+      });
   }
 }

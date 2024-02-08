@@ -1,10 +1,10 @@
 //#region Imports
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastsManager } from 'ng2-toastr';
-import * as moment from 'moment';
-import { ContactComponent } from '@campcadet/components/contact/contact.component';
-import { DataService } from '@campcadet/services/data.service';
+import { ToastrService } from 'ngx-toastr';
+import { DateTime } from 'luxon';
+import { ContactComponent } from '../../components/contact/contact.component';
+import { DataService } from '../../services/data.service';
 //#endregion
 
 @Component({
@@ -13,31 +13,34 @@ import { DataService } from '@campcadet/services/data.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  year: number;
+  year: number | undefined;
 
   constructor(private dialog: MatDialog,
-    private toastr: ToastsManager,
-    private vcr: ViewContainerRef,
+    private toastr: ToastrService,
     public dataService: DataService) {
-
-    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
-    this.year = moment().year();
+    this.year = DateTime.now().year;
   }
 
   contact(): void {
     this.dialog.open(ContactComponent)
       .afterClosed()
-      .subscribe(result => {
-        if (result === undefined) { return; }
+      .subscribe({
+        next: (result) => {
+          if (result === undefined) { return; }
 
-        if (result) {
-          this.toastr.success('Email successfully sent', 'Message Received');
-        } else {
-          this.toastr.error('Failed to send email', 'Give Us A Call');
+          if (result) {
+            this.toastr.success('Email successfully sent', 'Message Received');
+          } else {
+            this.toastr.error('Failed to send email', 'Give Us A Call');
+          }
+        },
+        error: (err) => {
+          this.toastr.error('Unable to display contact form', 'Give Us A Call');
+          console.log(err);
         }
-      }, err => this.toastr.error('Unable to display contact form', 'Give Us A Call'));
+      })
   }
 }

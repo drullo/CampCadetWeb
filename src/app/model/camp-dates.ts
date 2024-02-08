@@ -1,7 +1,7 @@
 export interface CampDates {
-    startDate: Date;
-    endDate: Date;
-    applicationDeadline?: Date;
-    applicationsAvailableBeginning?: Date;
-    orientationDate?: Date;
+    startDate: string;
+    endDate: string;
+    applicationDeadline?: string;
+    applicationsAvailableBeginning?: string;
+    orientationDate?: string;
 }

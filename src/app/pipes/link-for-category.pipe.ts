@@ -1,8 +1,6 @@
-//#region Imports
 import { Pipe, PipeTransform } from '@angular/core';
-import { Link } from '@campcadet/model/link';
-import { SimpleItem } from '@campcadet/model/simple-item';
-//#endregion
+import { Link } from '../model/link';
+import { SimpleItem } from '../model/simple-item';
 
 @Pipe({
   name: 'linkForCategory'

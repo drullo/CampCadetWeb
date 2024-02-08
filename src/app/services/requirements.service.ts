@@ -1,14 +1,14 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { Requirement } from '@campcadet/model/requirement';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { Requirement } from '../model/requirement';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RequirementsService {
-  private url = `${environment.apiUrl}/api/eligibility`;
+  private url = `${config.api}/api/eligibility`;
 
   constructor(private http: HttpClient) { }
 

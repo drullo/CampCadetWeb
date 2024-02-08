@@ -1,5 +1,5 @@
-import { DonorCategory } from '@campcadet/model/donor-category';
-import { Donor } from '@campcadet/model/donor';
+import { DonorCategory } from './donor-category';
+import { Donor } from './donor';
 
 export interface DonorCategoryLink {
     donor: Donor;

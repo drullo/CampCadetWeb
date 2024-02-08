@@ -1,8 +1,0 @@
-.grid {
-    display: grid;
-    grid-gap: 1em;
-}
-
-mat-form-field {
-    width: 100%;
-}

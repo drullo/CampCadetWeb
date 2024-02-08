@@ -1,4 +1,4 @@
-export class SimpleItem {
+export interface SimpleItem {
     id: number;
     description: string;
 }

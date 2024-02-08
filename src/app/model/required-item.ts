@@ -1,4 +1,4 @@
-export class RequiredItem {
+export interface RequiredItem {
     id: number;
     item: string;
 }

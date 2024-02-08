@@ -10,20 +10,20 @@
       <!-- Name -->
       <mat-form-field>
         <input matInput placeholder="Your name" formControlName="name" [errorStateMatcher]="matcher">
-        <mat-error *ngIf="contactForm.controls['name'].errors?.required">
+        <!--<mat-error *ngIf="contactForm.controls['name'].errors?.required">
           Name is <strong>required</strong>
-        </mat-error>
+        </mat-error>-->
       </mat-form-field>
 
       <!-- Email -->
       <mat-form-field>
         <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
-        <mat-error *ngIf="contactForm.controls['email'].error?.email && !contactForm.controls['email'].error?.required">
+        <!--<mat-error *ngIf="contactForm.controls['email'].error?.email && !contactForm.controls['email'].error?.required">
           Please enter a valid email address
         </mat-error>
         <mat-error *ngIf="contactForm.controls['email'].error?.required">
           Email is <strong>required</strong>
-        </mat-error>
+        </mat-error>-->
       </mat-form-field>
 
       <!-- Phone -->
@@ -38,9 +38,9 @@
             {{ type.description }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="contactForm.controls['type'].error?.required">
+        <!--<mat-error *ngIf="contactForm.controls['type'].error?.required">
           Contact Type is <strong>required</strong>
-        </mat-error>
+        </mat-error>-->
       </mat-form-field>
 
       <!-- Contact Reason -->
@@ -50,17 +50,17 @@
             {{ reason.description }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="contactForm.controls['reason'].error?.required">
+        <!--<mat-error *ngIf="contactForm.controls['reason'].error?.required">
           Contact Reason is <strong>required</strong>
-        </mat-error>
+        </mat-error>-->
       </mat-form-field>
 
       <!-- Comments -->
       <mat-form-field>
         <textarea matInput placeholder="Comment/Question" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10" formControlName="comments" [errorStateMatcher]="matcher"></textarea>
-        <mat-error *ngIf="contactForm.controls['comments'].error?.required">
+        <!--<mat-error *ngIf="contactForm.controls['comments'].error?.required">
           Comment/Question is <strong>required</strong>
-        </mat-error>
+        </mat-error>-->
       </mat-form-field>
     </form>
 
@@ -71,7 +71,7 @@
 
   <mat-dialog-actions>
       <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="sendEmail()" [disabled]="!contactForm.dirty || contactForm.invalid">Send Email</button>
+      <button mat-raised-button color="primary" (click)="sendEmailViaEmailJs()" [disabled]="!contactForm.dirty || contactForm.invalid">Send Email</button>
   </mat-dialog-actions>
 </div>
 

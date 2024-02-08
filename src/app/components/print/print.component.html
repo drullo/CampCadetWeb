@@ -32,17 +32,18 @@
 
   <div *ngSwitchCase="'rules'">
     <div class="title">Camp Cadet Rules</div>
+    <div class="page-blurb" [innerHTML]="'Camp Rules Introduction' | blurb"></div>
 
-    <ul>
+    <!--<ul>
       <li *ngFor="let i of dataService.rules" [innerHTML]="i.description"></li>
-    </ul>
+    </ul>-->
   </div>
 
   <div *ngSwitchCase="'required-items'">
     <div class="title">Camp Cadet Required Items</div>
-
-    <ul>
+    <div class="page-blurb" [innerHTML]="'Camp Supplies Introduction' | blurb"></div>
+    <!--<ul>
         <li *ngFor="let i of dataService.requiredItems" [innerHTML]="i.item"></li>
-    </ul>
+    </ul>-->
   </div>
 </div>

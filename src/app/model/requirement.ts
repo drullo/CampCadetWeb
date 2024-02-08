@@ -1,4 +1,4 @@
-export class Requirement {
+export interface Requirement {
     id: number;
     requirement: string;
 }

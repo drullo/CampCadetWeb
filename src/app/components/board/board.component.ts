@@ -1,23 +1,14 @@
-//#region Imports
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthenticationService } from '@campcadet/services/authentication.service';
-import { BlurbEditable } from '@campcadet/model/blurb-editable';
-import { DataService } from '@campcadet/services/data.service';
-//#endregion
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'cc-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent extends BlurbEditable {
+export class BoardComponent {
   title = 'Board of Directors';
   blurbName = 'Board Introduction';
 
-  constructor(public dataService: DataService,
-    dialog: MatDialog,
-    public authenticationService: AuthenticationService) {
-    super(dialog, authenticationService);
-  }
+  constructor(public dataService: DataService) {}
 }

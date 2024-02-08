@@ -1,15 +1,15 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { DonorLevel } from '@campcadet/model/donor-level';
-import { DonorCategoryLink } from '@campcadet/model/donor-category-link';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { DonorCategoryLink } from '../model/donor-category-link';
+import { DonorLevel } from '../model/donor-level';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DonorsService {
-  private url = `${environment.apiUrl}/api`;
+  private url = `${config.api}/api`;
 
   constructor(private http: HttpClient) { }
 

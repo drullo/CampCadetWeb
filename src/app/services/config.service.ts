@@ -1,14 +1,14 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { ConfigSetting } from '@campcadet/model/config-setting';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { ConfigSetting } from '../model/config-setting';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ConfigService {
-  private url = `${environment.apiUrl}/api/config`;
+  private url = `${config.api}/api/config`;
 
   constructor(private http: HttpClient) { }
 

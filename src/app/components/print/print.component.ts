@@ -1,9 +1,8 @@
 //#region Imports
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { DataService } from '@campcadet/services/data.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
+import { DataService } from '../../services/data.service';
+import { timer } from 'rxjs';
 //#endregion
 @Component({
   selector: 'cc-print',
@@ -11,7 +10,7 @@ import 'rxjs/add/observable/timer';
   styleUrls: ['./print.component.css']
 })
 export class PrintComponent implements OnInit {
-  topic: string;
+  topic: string | null | undefined;
 
   constructor(private route: ActivatedRoute, public dataService: DataService) { }
 
@@ -20,7 +19,7 @@ export class PrintComponent implements OnInit {
       .subscribe((params: ParamMap) => {
         this.topic = params.get('topic');
 
-        Observable.timer(3000).subscribe(() => {
+        timer(3000).subscribe(() => {
           if (this.topic) {
             window.print();
           }

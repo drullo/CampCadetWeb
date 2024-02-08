@@ -1,13 +1,13 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { environment } from '@environment/environment';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApplicationsService {
-  private url = `${environment.apiUrl}/api/applications`;
+  private url = `${config.api}/api/applications`;
 
   constructor(private http: HttpClient) { }
 

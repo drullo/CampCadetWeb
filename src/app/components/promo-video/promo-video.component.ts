@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./promo-video.component.css']
 })
 export class PromoVideoComponent {
-
-  constructor() { }
 }

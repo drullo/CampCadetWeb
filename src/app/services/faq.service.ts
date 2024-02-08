@@ -1,15 +1,15 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { Faq } from '@campcadet/model/faq';
-import { SimpleItem } from '@campcadet/model/simple-item';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { Faq } from '../model/faq';
+import { SimpleItem } from '../model/simple-item';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FaqService {
-  private url = `${environment.apiUrl}/api`;
+  private url = `${config.api}/api`;
 
   constructor(private http: HttpClient) { }
 

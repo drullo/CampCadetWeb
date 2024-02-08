@@ -28,14 +28,14 @@
 
         <button mat-menu-item [matMenuTriggerFor]="about">About Us</button>
 
-        <button *ngIf="user" mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
+        <!--<button *ngIf="user" mat-menu-item [matMenuTriggerFor]="admin">Admin</button>-->
 
-        <button *ngIf="!user" mat-menu-item (click)="login()">
+        <!--<button *ngIf="!user" mat-menu-item (click)="login()">
           <mat-icon>person</mat-icon>
           Login
-        </button>
+        </button>-->
 
-        <button *ngIf="user" mat-menu-item (click)="logout()">
+        <button *ngIf="user" mat-menu-item> <!-- (click)="logout()"-->
           <img [src]="user.image" alt=""> Logout {{ user.name }}
         </button>
       </mat-menu>
@@ -108,11 +108,11 @@
         </button>
       </mat-menu>
 
-      <mat-menu #admin="matMenu">
+      <!--<mat-menu #admin="matMenu">
         <button mat-menu-item (click)="edit('campDates')">
           <span>Camp Dates</span>
         </button>
-      </mat-menu>
+      </mat-menu>-->
 
       <div id="more-info">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>

@@ -1,14 +1,14 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { SimpleItem } from '@campcadet/model/simple-item';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { SimpleItem } from '../model/simple-item';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RulesService {
-  private url = `${environment.apiUrl}/api/camprules`;
+  private url = `${config.api}/api/camprules`;
 
   constructor(private http: HttpClient) { }
 

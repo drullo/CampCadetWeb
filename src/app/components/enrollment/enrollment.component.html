@@ -4,12 +4,14 @@
 
 <div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
   <div>
-    <div class="page-title" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn">
-      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div class="page-title">
+      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
       {{ title }}
     </div>
 
-    <div class="page-blurb" [innerHTML]="blurbName | blurb" (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"></div>
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
 
     <div id="print">
       <a [routerLink]="['/print', 'enrollment']" target="_blank">

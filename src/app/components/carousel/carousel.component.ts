@@ -1,9 +1,6 @@
 //#region Imports
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthenticationService } from '@campcadet/services/authentication.service';
-import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
-import { DataService } from '@campcadet/services/data.service';
+import { DataService } from '../../services/data.service';
 //#endregion
 
 @Component({
@@ -44,12 +41,10 @@ export class CarouselComponent {
     ]
   };
 
-  constructor(public dataService: DataService,
-    public authenticationService: AuthenticationService,
-    private dialog: MatDialog) { }
+  constructor(public dataService: DataService) { }
 
-  editCampDates(): void {
+  /*editCampDates(): void {
     if (!this.authenticationService.loggedIn) { return; }
     this.dialog.open(CampDatesComponent);
-  }
+  }*/
 }

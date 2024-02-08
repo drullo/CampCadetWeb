@@ -39,23 +39,22 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
 
-    <div *ngIf="dataService.dataReady && dataService.campDates"
-      [class.editable]="authenticationService.loggedIn"
-      [title]="authenticationService.loggedIn ? 'Click to edit camp dates' : ''"
-      (click)="editCampDates()">
+    <!-- [class.editable]="authenticationService.loggedIn" [title]="authenticationService.loggedIn ? 'Click to edit camp dates' : ''" (click)="editCampDates()" -->
+    <div *ngIf="dataService.dataReady && dataService.campDates">
       <div>
           Next camp session
       </div>
       <div id="dates">
-        <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+        <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
         {{ dataService.campDates.startDate | date:'EEEE, MMMM d' }}
       </div>
 
       <div class="scroll-down">{{ scrollDownText}}</div>
     </div>
 
-    <div *ngIf="dataService.dataReady && !dataService.campDates" class="scroll-down" [class.editable]="authenticationService.loggedIn">
-      <mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>
+    <!-- [class.editable]="authenticationService.loggedIn" -->
+    <div *ngIf="dataService.dataReady && !dataService.campDates" class="scroll-down">
+      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
       {{ scrollDownText}}
     </div>
   </div>

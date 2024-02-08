@@ -1,36 +1,36 @@
 //#region Imports
-import { Component, OnInit, ViewContainerRef, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastsManager } from 'ng2-toastr';
-import { environment } from '@environment/environment';
-import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
-import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
+//import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular5-social-login';
+import { DateTime } from 'luxon';
 
 import { Email } from './../../model/email';
 
 // Services
-import { ApplicationsService } from '@campcadet/services/applications.service';
-import { AuthenticationService } from '@campcadet/services/authentication.service';
-import { DataService } from '@campcadet/services/data.service';
-import { ContactService } from '@campcadet/services/contact.service';
+import { ApplicationsService } from '../../services/applications.service';
+//import { AuthenticationService } from '../../services/authentication.service';
+import { DataService } from '../../services/data.service';
+import { ContactService } from '../../services/contact.service';
 
 // Components
-import { BoardComponent } from '@campcadet/components/board/board.component';
-import { CallOfHonorComponent } from '@campcadet/components/call-of-honor/call-of-honor.component';
-import { CampDatesComponent } from '@campcadet/components/admin/camp-dates/camp-dates.component';
-import { ContactComponent } from '@campcadet/components/contact/contact.component';
-import { DonateComponent } from '@campcadet/components/donate/donate.component';
-import { DonorsComponent } from '@campcadet/components/donors/donors.component';
-import { EnrollmentComponent } from '@campcadet/components/enrollment/enrollment.component';
-import { FAQComponent } from '@campcadet/components/faq/faq.component';
-import { HistoryComponent } from '@campcadet/components/history/history.component';
-import { HomeComponent } from '@campcadet/components/home/home.component';
-import { LinksComponent } from '@campcadet/components/links/links.component';
-import { LoginSelectorComponent } from '@campcadet/components/login-selector/login-selector.component';
-import { PreparationComponent } from '@campcadet/components/preparation/preparation.component';
-import { RequiredItemsComponent } from '@campcadet/components/required-items/required-items.component';
-import { RulesComponent } from '@campcadet/components/rules/rules.component';
+import { BoardComponent } from '../../components/board/board.component';
+import { CallOfHonorComponent } from '../../components/call-of-honor/call-of-honor.component';
+//import { CampDatesComponent } from '../../components/admin/camp-dates/camp-dates.component';
+import { ContactComponent } from '../../components/contact/contact.component';
+import { DonateComponent } from '../../components/donate/donate.component';
+import { DonorsComponent } from '../../components/donors/donors.component';
+import { EnrollmentComponent } from '../../components/enrollment/enrollment.component';
+import { FAQComponent } from '../../components/faq/faq.component';
+import { HistoryComponent } from '../../components/history/history.component';
+import { HomeComponent } from '../../components/home/home.component';
+import { LinksComponent } from '../../components/links/links.component';
+import { LoginSelectorComponent } from '../../components/login-selector/login-selector.component';
+import { PreparationComponent } from '../../components/preparation/preparation.component';
+import { RequiredItemsComponent } from '../../components/required-items/required-items.component';
+import { RulesComponent } from '../../components/rules/rules.component';
+import { config } from '../../config';
 //#endregion
 
 @Component({
@@ -40,42 +40,40 @@ import { RulesComponent } from '@campcadet/components/rules/rules.component';
 })
 export class MenuComponent implements OnInit, AfterViewChecked {
   //#region Fields
-  atBoard: boolean;
-  atCOH: boolean;
-  atDonate: boolean;
-  atDonors: boolean;
-  atEnrollment: boolean;
-  atFaq: boolean;
-  atHistory: boolean;
-  atHome: boolean;
-  atLinks: boolean;
-  atPrep: boolean;
-  atRequirements: boolean;
-  atRules: boolean;
+  atBoard = false;
+  atCOH = false;
+  atDonate = false;
+  atDonors = false;
+  atEnrollment = false;
+  atFaq = false;
+  atHistory = false;
+  atHome = false;
+  atLinks = false;
+  atPrep = false;
+  atRequirements = false;
+  atRules = false;
 
-  application: string;
-  applicationYear: string;
+  application: string | undefined;
+  applicationYear: string | undefined;
 
   user: {
     id: string,
     name: string,
     email: string,
     image: string
-  };
+  } | undefined;
   //#endregion
 
   //#region Lifecycle
   constructor(private route: ActivatedRoute,
-    private router: Router,
     private applicationService: ApplicationsService,
     private dialog: MatDialog,
-    private toastr: ToastsManager,
-    private vcr: ViewContainerRef,
+    private toastr: ToastrService,
     public dataService: DataService,
-    private socialAuthService: AuthService,
+    //private socialAuthService: AuthService,
     private contactService: ContactService,
-    private authenticationService: AuthenticationService) {
-    this.toastr.setRootViewContainerRef(vcr);
+    //private authenticationService: AuthenticationService
+    ) {
   }
 
   ngOnInit() {
@@ -97,9 +95,9 @@ export class MenuComponent implements OnInit, AfterViewChecked {
       .subscribe(app => {
         const year = app.replace('applications/', '').split('.')[0];
 
-        if (+year < moment().year()) { return; }
+        if (+year < DateTime.now().year) { return; }
 
-        this.application = `${environment.apiUrl}/${app}`;
+        this.application = `${config.api}/${app}`;
         this.applicationYear = year;
       });
   }
@@ -108,8 +106,13 @@ export class MenuComponent implements OnInit, AfterViewChecked {
     if (this.user || !this.dataService.configSettings) { return; }
 
     // Logged in?
-    const fbUser = JSON.parse(localStorage.getItem('facebook'));
-    const googleUser = JSON.parse(localStorage.getItem('google'));
+    /*const fbUser = localStorage.getItem('facebook') ?
+      JSON.parse(localStorage.getItem('facebook')!) :
+      null;
+
+    const googleUser = localStorage.getItem('google') ?
+      JSON.parse(localStorage.getItem('google')!) :
+      null;
 
     if (fbUser && this.userIsAdmin(fbUser.email)) {
       this.user = {
@@ -125,7 +128,7 @@ export class MenuComponent implements OnInit, AfterViewChecked {
         email: googleUser.email,
         image: googleUser.image
       };
-    }
+    }*/
   }
   //#endregion
 
@@ -133,27 +136,32 @@ export class MenuComponent implements OnInit, AfterViewChecked {
   contact(): void {
     this.dialog.open(ContactComponent)
       .afterClosed()
-      .subscribe(result => {
-        if (result === undefined) { return; }
-
-        if (result) {
-          this.toastr.success('Email successfully sent', 'Message Received');
-        } else {
-          this.toastr.error('Failed to send email', 'Give Us A Call');
+      .subscribe({
+        next: (result) => {
+          if (result === undefined) { return; }
+    
+          if (result) {
+            this.toastr.success('Email successfully sent', 'Message Received');
+          } else {
+            this.toastr.error('Failed to send email', 'Give Us A Call');
+          }
+        },
+        error: (err) => {
+          this.toastr.error('Unable to display contact form', 'Give Us A Call')
         }
-      }, err => this.toastr.error('Unable to display contact form', 'Give Us A Call'));
+      });
   }
 
-  login(): void {
+  /*login(): void {
     this.dialog.open(LoginSelectorComponent).afterClosed().subscribe(socialPlatform => {
       if (!socialPlatform) { return; }
 
       let socialPlatformProvider;
 
       if (socialPlatform === 'facebook') {
-        socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+        //socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
       } else if (socialPlatform === 'google') {
-        socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+        //socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
       }
 
       this.socialAuthService
@@ -249,6 +257,6 @@ export class MenuComponent implements OnInit, AfterViewChecked {
         this.dialog.open(CampDatesComponent);
         break;
     }
-  }
+  }*/
   //#endregion
 }

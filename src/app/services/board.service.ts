@@ -1,14 +1,14 @@
-//#region Imports
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs/Observable';
-import { BoardMember } from '@campcadet/model/board-member';
-//#endregion
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../config';
+import { BoardMember } from '../model/board-member';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BoardService {
-  private url = `${environment.apiUrl}/api/members`;
+  private url = `${config.api}/api/members`;
 
   constructor(private http: HttpClient) { }
 
