@@ -190,181 +190,6 @@ export class DataService {
     
       this.afterDataRetrieved();
     });
-
-    //#region Replaced by forkJoin
-    // Camp dates
-    /*this.dateService.getCurrent().subscribe(data => {
-      this.campDates = data[0];
-      this.afterDataRetrieved();
-    });*/
-
-    // Blurbs
-    /*this.blurbService.getBlurbs().subscribe(data => {
-      this.blurbs = data;
-      this.afterDataRetrieved();
-    });*/
-
-    // Camp Director
-    /*this.boardService.getMembers().subscribe(data => {
-      this.campDirector = data.filter(m => m.title === 'Camp Director')[0];
-      this.afterDataRetrieved();
-    });*/
-
-    // Board members & categories
-    /*this.boardService.getMembers().subscribe(data => {
-      this.boardMemberCategories = [];
-
-      const duplicateCategories = data.map(d => {
-        return { id: d.boardMemberCategory.id, description: d.boardMemberCategory.description };
-      });
-
-      duplicateCategories.forEach(cat => {
-        const existingIds = this.boardMemberCategories.map(existing => existing.id);
-
-        if (existingIds.indexOf(cat.id) === -1) {
-          this.boardMemberCategories.push(cat);
-        }
-      });
-
-      this.boardMemberCategories = this.boardMemberCategories.sort((a, b) => {
-        if (a.description > b.description) { return 1; }
-        if (a.description < b.description) { return -1; }
-        return 0;
-      });
-
-      this.boardMembers = data
-        .filter(member => member.enabled);
-
-      this.boardDirectors = data
-        .filter(member => member.enabled && member.boardMemberCategory.description.toLowerCase() === 'directors');
-
-      this.afterDataRetrieved();
-    });*/
-
-    // Contact categories
-    /*this.contactService.getContactCategories()
-      .subscribe(data => {
-        this.contactTypes = data;
-        this.afterDataRetrieved();
-      });*/
-
-    // Contact reasons
-    /*this.contactService.getContactReasons()
-      .subscribe(data => {
-        this.contactReasons = data;
-        this.afterDataRetrieved();
-      });*/
-
-    // Donor levels
-    /*this.donorService.getDonorLevels()
-      .subscribe(data => {
-        this.donorLevels = data.sort((a, b) => {
-          if (a.amountLower < b.amountLower) { return 1; }
-          if (a.amountLower > b.amountLower) { return -1; }
-          return 0;
-        });
-
-        this.afterDataRetrieved();
-      });*/
-
-    // Donor categories & Donor/Category links
-    /*this.donorService.getDonorCategoryLinks().subscribe(data => {
-      this.donorCategories = [];
-
-      const duplicateCategories = data.map(d => {
-        return { id: d.donorCategory.id, description: d.donorCategory.description };
-      });
-
-      duplicateCategories.forEach(cat => {
-        const existingIds = this.donorCategories.map(existing => existing.id);
-
-        if (existingIds.indexOf(cat.id) === -1) {
-          this.donorCategories.push(cat);
-        }
-      });
-
-      this.donorCatLinks = data;
-      this.afterDataRetrieved();
-    });*/
-
-    // Eligibility requirements
-    /*this.requirementsService.getRequirements()
-      .subscribe(data => {
-        this.requirements = data;
-        this.afterDataRetrieved();
-      });*/
-
-    // FAQs
-    /*this.faqService.getFaqs().subscribe(data => {
-      this.faqCategories = [];
-
-      const duplicateCategories = data.map(d => {
-        return { id: d.faqCategory.id, description: d.faqCategory.description };
-      });
-
-      duplicateCategories.forEach(cat => {
-        const existingIds = this.faqCategories.map(existing => existing.id);
-
-        if (existingIds.indexOf(cat.id) === -1) {
-          this.faqCategories.push(cat);
-        }
-      });
-
-      this.faqCategories = this.faqCategories.sort((a, b) => {
-        if (a.description > b.description) { return 1; }
-        if (a.description < b.description) { return -1; }
-        return 0;
-      });
-
-      this.faqs = data;
-      this.afterDataRetrieved();
-    });*/
-
-    // Links
-    /*this.linkService.getLinks().subscribe(data => {
-      this.linkCategories = [];
-
-      const duplicateCategories = data.map(d => {
-        return { id: d.linkCategory.id, description: d.linkCategory.description };
-      });
-
-      duplicateCategories.forEach(cat => {
-        const existingIds = this.linkCategories.map(existing => existing.id);
-
-        if (existingIds.indexOf(cat.id) === -1) {
-          this.linkCategories.push(cat);
-        }
-      });
-
-      this.linkCategories = this.linkCategories.sort((a, b) => {
-        if (a.description > b.description) { return 1; }
-        if (a.description < b.description) { return -1; }
-        return 0;
-      });
-
-      this.links = data;
-      this.afterDataRetrieved();
-    });*/
-
-    // Required items
-    /*this.requiredItemsService.getItems()
-      .subscribe(data => {
-        this.requiredItems = data;
-        this.afterDataRetrieved();
-      });*/
-
-    // Rules
-    /*this.rulesService.getRules()
-      .subscribe(data => {
-        this.rules = data;
-        this.afterDataRetrieved();
-      });*/
-
-    /*this.configService.getAllSettings().subscribe(data => {
-      this.configSettings = data;
-      this.afterDataRetrieved();
-    });*/
-    //#endregion
   }
 
   private afterDataRetrieved(): void {
@@ -391,17 +216,17 @@ export class DataService {
     }
 
     if (this.campDates) {
-      const startDate = DateTime.fromISO(this.campDates.startDate).toLocaleString(DateTime.DATE_SHORT); //moment(this.campDates.startDate).format('LL');
-      const endDate = DateTime.fromISO(this.campDates.endDate).toLocaleString(DateTime.DATE_SHORT); //moment(this.campDates.endDate).format('LL');
+      const startDate = DateTime.fromISO(this.campDates.startDate).toLocaleString(DateTime.DATE_SHORT);
+      const endDate = DateTime.fromISO(this.campDates.endDate).toLocaleString(DateTime.DATE_SHORT);
       const dueDate = this.campDates.applicationDeadline ?
         DateTime.fromISO(this.campDates.applicationDeadline).toLocaleString(DateTime.DATE_SHORT) :
-        null; //moment(this.campDates.applicationDeadline).format('LL');
+        null;
       const appsAvailableDate = this.campDates.applicationsAvailableBeginning ?
         DateTime.fromISO(this.campDates.applicationsAvailableBeginning).toLocaleString(DateTime.DATE_SHORT) :
-        null; //moment(this.campDates.applicationsAvailableBeginning).format('LL');
+        null;
       const orientationDate = this.campDates.orientationDate ?
         DateTime.fromISO(this.campDates.orientationDate).toLocaleString(DateTime.DATE_SHORT) :
-        null; //moment(this.campDates.orientationDate).format('LL');
+        null;
 
       this.blurbs.forEach(blurb => {
         blurb.blurb = blurb.blurb
@@ -417,5 +242,17 @@ export class DataService {
     }
 
     this.dataReady = true;
+  }
+
+  getBlurbByName(blurbName: string): string | undefined {
+    return this.blurbs?.find(b => b.name.toLowerCase() === blurbName.toLowerCase())?.blurb;
+  }
+
+  getContactTypeById(id: number): string | undefined {
+    return this.contactTypes?.find(t => t.id === id)?.description;
+  }
+
+  getContactReasonById(id: number): string | undefined {
+    return this.contactReasons?.find(r => r.id === id)?.description;
   }
 }

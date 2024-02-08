@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import emailjs from '@emailjs/browser';
+import { config } from '../../config';
 
 @Component({
-  selector: 'app-root',
+  selector: 'cc-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -14,7 +15,7 @@ export class AppComponent {
   //#region Lifecycle
   constructor(public dataService: DataService, private route: ActivatedRoute) {
     emailjs.init({
-      publicKey: 'IzTjPBVBXcGc3LUEs'
+      publicKey: config.emailJs.publicKey
     });
   }
 

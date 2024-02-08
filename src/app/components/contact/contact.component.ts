@@ -49,13 +49,9 @@ export class ContactComponent {
   sendEmailViaEmailJs(): void {
     if (!this.dataService.configSettings) { return; }
 
-    const type = this.dataService.contactTypes
-      .find(t => t.id === +this.contactForm.value.type!)
-      ?.description;
+    const type = this.dataService.getContactTypeById(+this.contactForm.value.type!);
 
-    const reason = this.dataService.contactReasons
-      .find(r => r.id === +this.contactForm.value.reason!)
-      ?.description;
+    const reason = this.dataService.getContactReasonById(+this.contactForm.value.reason!);
 
     const templateParams = {
       ...this.contactForm.value,

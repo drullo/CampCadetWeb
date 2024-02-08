@@ -9,11 +9,12 @@ export class BlurbPipe implements PipeTransform {
   constructor(private dataService: DataService) { }
 
   transform(blurbName: string): string | undefined {
-    if (!this.dataService.blurbs || !blurbName) { return; }
+    /*if (!this.dataService.blurbs || !blurbName) { return; }
 
     const blurb = this.dataService.blurbs
       .filter(b => b.name.toLowerCase() === blurbName.toLowerCase())[0];
 
-    return blurb ? blurb.blurb : undefined;
+    return blurb ? blurb.blurb : undefined;*/
+    return this.dataService.getBlurbByName(blurbName);
   }
 }
