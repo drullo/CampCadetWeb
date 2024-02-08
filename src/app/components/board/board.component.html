@@ -2,38 +2,42 @@
 
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
-  <div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-title">
-      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-      {{ title }}
+@if (dataService.dataReady) {
+  <div id="parent" class="page-background dark-bg">
+    <div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-title">
+        <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+        {{ title }}
+      </div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
+      @for (category of dataService.boardMemberCategories; track category) {
+        <mat-accordion>
+          <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category">
+                {{ category.description }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (member of dataService.boardMembers | memberForCategory:category; track member) {
+              <div class="expansion-body">
+                <span class="prefix">
+                  {{ member.prefix }}
+                </span>
+                <span class="name">
+                  {{ member.firstName }} {{ member.lastName }}
+                </span>
+                @if (member.title) {
+                  <span class="title">
+                    ({{ member.title }})
+                  </span>
+                }
+              </div>
+            }
+          </mat-expansion-panel>
+        </mat-accordion>
+      }
     </div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
-
-    <mat-accordion *ngFor="let category of dataService.boardMemberCategories">
-      <mat-expansion-panel expanded="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title class="category">
-            {{ category.description }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div class="expansion-body" *ngFor="let member of dataService.boardMembers | memberForCategory:category">
-          <span class="prefix">
-            {{ member.prefix }}
-          </span>
-          <span class="name">
-            {{ member.firstName }} {{ member.lastName }}
-          </span>
-          <span *ngIf="member.title" class="title">
-            ({{ member.title }})
-          </span>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
   </div>
-</div>
+}

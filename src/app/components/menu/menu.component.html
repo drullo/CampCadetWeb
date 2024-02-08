@@ -1,188 +1,206 @@
-<mat-toolbar color="primary" *ngIf="dataService.dataReady" [class.sticky]="!atHome">
-  <mat-toolbar-row id="" *ngIf="!atHome">
-    <div>
-      <img src="/assets/badge.png" alt="">
-    </div>
-    <div>
-      Westmoreland County Camp Cadet
-    </div>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <div id="mobile-menu">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <mat-menu #menu="matMenu">
-        <button *ngIf="!atHome" mat-menu-item [routerLink]="['/home']">
-          <mat-icon>home</mat-icon>
-          <span>Home</span>
+@if (dataService.dataReady) {
+  <mat-toolbar color="primary" [class.sticky]="!atHome">
+    @if (!atHome) {
+      <mat-toolbar-row id="">
+        <div>
+          <img src="/assets/badge.png" alt="">
+        </div>
+        <div>
+          Westmoreland County Camp Cadet
+        </div>
+      </mat-toolbar-row>
+    }
+    <mat-toolbar-row>
+      <div id="mobile-menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
         </button>
-
-        <button mat-menu-item [matMenuTriggerFor]="camp">Camp Info</button>
-
-        <button mat-menu-item [matMenuTriggerFor]="operations">Camp Operations</button>
-
-        <button mat-menu-item [matMenuTriggerFor]="resources">Resources</button>
-
-        <button mat-menu-item [matMenuTriggerFor]="about">About Us</button>
-
-        <!--<button *ngIf="user" mat-menu-item [matMenuTriggerFor]="admin">Admin</button>-->
-
-        <!--<button *ngIf="!user" mat-menu-item (click)="login()">
+        <mat-menu #menu="matMenu">
+          @if (!atHome) {
+            <button mat-menu-item [routerLink]="['/home']">
+              <mat-icon>home</mat-icon>
+              <span>Home</span>
+            </button>
+          }
+          <button mat-menu-item [matMenuTriggerFor]="camp">Camp Info</button>
+          <button mat-menu-item [matMenuTriggerFor]="operations">Camp Operations</button>
+          <button mat-menu-item [matMenuTriggerFor]="resources">Resources</button>
+          <button mat-menu-item [matMenuTriggerFor]="about">About Us</button>
+          <!--<button *ngIf="user" mat-menu-item [matMenuTriggerFor]="admin">Admin</button>-->
+          <!--<button *ngIf="!user" mat-menu-item (click)="login()">
           <mat-icon>person</mat-icon>
           Login
         </button>-->
-
-        <button *ngIf="user" mat-menu-item> <!-- (click)="logout()"-->
-          <img [src]="user.image" alt=""> Logout {{ user.name }}
-        </button>
+        @if (user) {
+          <button mat-menu-item> <!-- (click)="logout()"-->
+            <img [src]="user.image" alt=""> Logout {{ user.name }}
+          </button>
+        }
       </mat-menu>
-
       <mat-menu #camp="matMenu">
-        <button *ngIf="!atEnrollment" mat-menu-item [routerLink]="['/enrollment']">
-          <mat-icon>directions_run</mat-icon>
-          <span>Cadet Enrollment</span>
-        </button>
-
-        <button *ngIf="!atRules" mat-menu-item [routerLink]="['/rules']">
-          <mat-icon>info</mat-icon>
-          <span>Rules</span>
-        </button>
-
-        <button *ngIf="!atPrep" mat-menu-item [routerLink]="['/prep']">
-          <mat-icon>build</mat-icon>
-          <span>Camp Preparation</span>
-        </button>
-
-        <button *ngIf="!atRequirements" mat-menu-item [routerLink]="['/requirements']">
-          <mat-icon>check</mat-icon>
-          <span>Required Items</span>
-        </button>
-
-        <button *ngIf="!atFaq" mat-menu-item [routerLink]="['/faq']">
-          <mat-icon>help</mat-icon>
-          <span>Common Questions</span>
-        </button>
+        @if (!atEnrollment) {
+          <button mat-menu-item [routerLink]="['/enrollment']">
+            <mat-icon>directions_run</mat-icon>
+            <span>Cadet Enrollment</span>
+          </button>
+        }
+        @if (!atRules) {
+          <button mat-menu-item [routerLink]="['/rules']">
+            <mat-icon>info</mat-icon>
+            <span>Rules</span>
+          </button>
+        }
+        @if (!atPrep) {
+          <button mat-menu-item [routerLink]="['/prep']">
+            <mat-icon>build</mat-icon>
+            <span>Camp Preparation</span>
+          </button>
+        }
+        @if (!atRequirements) {
+          <button mat-menu-item [routerLink]="['/requirements']">
+            <mat-icon>check</mat-icon>
+            <span>Required Items</span>
+          </button>
+        }
+        @if (!atFaq) {
+          <button mat-menu-item [routerLink]="['/faq']">
+            <mat-icon>help</mat-icon>
+            <span>Common Questions</span>
+          </button>
+        }
       </mat-menu>
-
       <mat-menu #about="matMenu">
-        <button *ngIf="!atBoard" mat-menu-item [routerLink]="['/board']">
-          <mat-icon>people</mat-icon>
-          <span>Our Board</span>
-        </button>
-
+        @if (!atBoard) {
+          <button mat-menu-item [routerLink]="['/board']">
+            <mat-icon>people</mat-icon>
+            <span>Our Board</span>
+          </button>
+        }
         <button mat-menu-item (click)="contact()">
           <mat-icon>mail</mat-icon>
           <span>Contact Us</span>
         </button>
-
-        <button *ngIf="!atHistory" mat-menu-item [routerLink]="['/history']">
-          <mat-icon>history</mat-icon>
-          <span>Camp Cadet History</span>
-        </button>
+        @if (!atHistory) {
+          <button mat-menu-item [routerLink]="['/history']">
+            <mat-icon>history</mat-icon>
+            <span>Camp Cadet History</span>
+          </button>
+        }
       </mat-menu>
-
       <mat-menu #operations="matMenu">
-        <button *ngIf="!atDonate" mat-menu-item [routerLink]="['/donate']">
-          <mat-icon>attach_money</mat-icon>
-          <span>Help Support Us</span>
-        </button>
-
-        <button *ngIf="!atDonors" mat-menu-item [routerLink]="['/donors']">
-          <mat-icon>extension</mat-icon>
-          <span>Current Sponsors</span>
-        </button>
+        @if (!atDonate) {
+          <button mat-menu-item [routerLink]="['/donate']">
+            <mat-icon>attach_money</mat-icon>
+            <span>Help Support Us</span>
+          </button>
+        }
+        @if (!atDonors) {
+          <button mat-menu-item [routerLink]="['/donors']">
+            <mat-icon>extension</mat-icon>
+            <span>Current Sponsors</span>
+          </button>
+        }
       </mat-menu>
-
       <mat-menu #resources="matMenu">
-        <button *ngIf="!atCOH" mat-menu-item [routerLink]="['/coh']">
-          <mat-icon>star</mat-icon>
-          <span>Call of Honor</span>
-        </button>
-
-        <button *ngIf="!atLinks" mat-menu-item [routerLink]="['/links']">
-          <mat-icon>computer</mat-icon>
-          <span>Other Sites</span>
-        </button>
+        @if (!atCOH) {
+          <button mat-menu-item [routerLink]="['/coh']">
+            <mat-icon>star</mat-icon>
+            <span>Call of Honor</span>
+          </button>
+        }
+        @if (!atLinks) {
+          <button mat-menu-item [routerLink]="['/links']">
+            <mat-icon>computer</mat-icon>
+            <span>Other Sites</span>
+          </button>
+        }
       </mat-menu>
-
       <!--<mat-menu #admin="matMenu">
-        <button mat-menu-item (click)="edit('campDates')">
-          <span>Camp Dates</span>
-        </button>
-      </mat-menu>-->
-
-      <div id="more-info">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        More Info
-      </div>
+      <button mat-menu-item (click)="edit('campDates')">
+        <span>Camp Dates</span>
+      </button>
+    </mat-menu>-->
+    <div id="more-info">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      More Info
     </div>
-
-    <div id="desktop-menu">
-      <button *ngIf="!atHome" mat-raised-button [routerLink]="['/home']">
+  </div>
+  <div id="desktop-menu">
+    @if (!atHome) {
+      <button mat-raised-button [routerLink]="['/home']">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
-
-      <button *ngIf="!atEnrollment" mat-raised-button [routerLink]="['/enrollment']">
+    }
+    @if (!atEnrollment) {
+      <button mat-raised-button [routerLink]="['/enrollment']">
         <mat-icon>directions_run</mat-icon>
         <span>Cadet Enrollment</span>
       </button>
-
-      <button *ngIf="!atRules" mat-raised-button [routerLink]="['/rules']">
+    }
+    @if (!atRules) {
+      <button mat-raised-button [routerLink]="['/rules']">
         <mat-icon>info</mat-icon>
         <span>Rules</span>
       </button>
-
-      <button *ngIf="!atPrep" mat-raised-button [routerLink]="['/prep']">
+    }
+    @if (!atPrep) {
+      <button mat-raised-button [routerLink]="['/prep']">
         <mat-icon>build</mat-icon>
         <span>Camp Preparation</span>
       </button>
-
-      <button *ngIf="!atRequirements" mat-raised-button [routerLink]="['/requirements']">
+    }
+    @if (!atRequirements) {
+      <button mat-raised-button [routerLink]="['/requirements']">
         <mat-icon>check</mat-icon>
         <span>Required Items</span>
       </button>
-
-      <button *ngIf="!atCOH" mat-raised-button [routerLink]="['/coh']">
+    }
+    @if (!atCOH) {
+      <button mat-raised-button [routerLink]="['/coh']">
         <mat-icon>star</mat-icon>
         <span>Call of Honor</span>
       </button>
-
-      <button *ngIf="!atFaq" mat-raised-button [routerLink]="['/faq']">
+    }
+    @if (!atFaq) {
+      <button mat-raised-button [routerLink]="['/faq']">
         <mat-icon>help</mat-icon>
         <span>Common Questions</span>
       </button>
-
-      <button *ngIf="!atBoard" mat-raised-button [routerLink]="['/board']">
+    }
+    @if (!atBoard) {
+      <button mat-raised-button [routerLink]="['/board']">
         <mat-icon>people</mat-icon>
         <span>Our Board</span>
       </button>
-
-      <button *ngIf="!atLinks" mat-raised-button [routerLink]="['/links']">
+    }
+    @if (!atLinks) {
+      <button mat-raised-button [routerLink]="['/links']">
         <mat-icon>computer</mat-icon>
         <span>Other Sites</span>
       </button>
-
-      <button *ngIf="!atDonors" mat-raised-button [routerLink]="['/donors']">
+    }
+    @if (!atDonors) {
+      <button mat-raised-button [routerLink]="['/donors']">
         <mat-icon>extension</mat-icon>
         <span>Donors</span>
       </button>
-
-      <button *ngIf="!atDonate" mat-raised-button [routerLink]="['/donate']">
+    }
+    @if (!atDonate) {
+      <button mat-raised-button [routerLink]="['/donate']">
         <mat-icon>attach_money</mat-icon>
         <span>Donate</span>
       </button>
-
-      <button *ngIf="!atHistory" mat-raised-button [routerLink]="['/history']">
+    }
+    @if (!atHistory) {
+      <button mat-raised-button [routerLink]="['/history']">
         <mat-icon>history</mat-icon>
         <span>Camp Cadet History</span>
       </button>
-    </div>
-
-    <div *ngIf="application" class="dark-bg">
+    }
+  </div>
+  @if (application) {
+    <div class="dark-bg">
       <a [href]="application" target="_blank">
         <!--Download {{ applicationYear }} Application-->
         <button mat-raised-button color="warn">
@@ -191,5 +209,7 @@
         </button>
       </a>
     </div>
-  </mat-toolbar-row>
+  }
+</mat-toolbar-row>
 </mat-toolbar>
+}

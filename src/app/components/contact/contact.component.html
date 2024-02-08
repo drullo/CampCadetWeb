@@ -1,83 +1,92 @@
-<div *ngIf="!dataService.dataReady">
-  <mat-spinner></mat-spinner>
-</div>
+@if (!dataService.dataReady) {
+  <div>
+    <mat-spinner></mat-spinner>
+  </div>
+}
 
-<div *ngIf="dataService.dataReady">
-  <h2 mat-dialog-title>Send Us An Email...</h2>
-
-  <mat-dialog-content>
-    <form [formGroup]="contactForm" novalidate>
-      <!-- Name -->
-      <mat-form-field>
-        <input matInput placeholder="Your name" formControlName="name" [errorStateMatcher]="matcher">
-        <!--<mat-error *ngIf="contactForm.controls['name'].errors?.required">
+@if (dataService.dataReady) {
+  <div>
+    <h2 mat-dialog-title>Send Us An Email...</h2>
+    <mat-dialog-content>
+      <form [formGroup]="contactForm" novalidate>
+        <!-- Name -->
+        <mat-form-field>
+          <input matInput placeholder="Your name" formControlName="name" [errorStateMatcher]="matcher">
+          <!--<mat-error *ngIf="contactForm.controls['name'].errors?.required">
           Name is <strong>required</strong>
         </mat-error>-->
       </mat-form-field>
-
       <!-- Email -->
       <mat-form-field>
         <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
         <!--<mat-error *ngIf="contactForm.controls['email'].error?.email && !contactForm.controls['email'].error?.required">
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="contactForm.controls['email'].error?.required">
-          Email is <strong>required</strong>
-        </mat-error>-->
-      </mat-form-field>
-
-      <!-- Phone -->
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="contactForm.controls['email'].error?.required">
+        Email is <strong>required</strong>
+      </mat-error>-->
+    </mat-form-field>
+    <!-- Phone -->
+    <mat-form-field>
+      <input matInput placeholder="Phone" formControlName="phone">
+    </mat-form-field>
+    <!-- Contact Type -->
+    @if (dataService.contactTypes) {
       <mat-form-field>
-        <input matInput placeholder="Phone" formControlName="phone">
-      </mat-form-field>
-
-      <!-- Contact Type -->
-      <mat-form-field *ngIf="dataService.contactTypes">
         <mat-select placeholder="Contact type" formControlName="type" [errorStateMatcher]="matcher">
-          <mat-option *ngFor="let type of dataService.contactTypes" [value]="type.id">
-            {{ type.description }}
-          </mat-option>
+          @for (type of dataService.contactTypes; track type) {
+            <mat-option [value]="type.id">
+              {{ type.description }}
+            </mat-option>
+          }
         </mat-select>
         <!--<mat-error *ngIf="contactForm.controls['type'].error?.required">
-          Contact Type is <strong>required</strong>
-        </mat-error>-->
-      </mat-form-field>
-
-      <!-- Contact Reason -->
-      <mat-form-field *ngIf="dataService.contactReasons">
-        <mat-select placeholder="Reason for contact" formControlName="reason" [errorStateMatcher]="matcher">
-          <mat-option *ngFor="let reason of dataService.contactReasons" [value]="reason.id">
+        Contact Type is <strong>required</strong>
+      </mat-error>-->
+    </mat-form-field>
+  }
+  <!-- Contact Reason -->
+  @if (dataService.contactReasons) {
+    <mat-form-field>
+      <mat-select placeholder="Reason for contact" formControlName="reason" [errorStateMatcher]="matcher">
+        @for (reason of dataService.contactReasons; track reason) {
+          <mat-option [value]="reason.id">
             {{ reason.description }}
           </mat-option>
-        </mat-select>
-        <!--<mat-error *ngIf="contactForm.controls['reason'].error?.required">
-          Contact Reason is <strong>required</strong>
-        </mat-error>-->
-      </mat-form-field>
+        }
+      </mat-select>
+      <!--<mat-error *ngIf="contactForm.controls['reason'].error?.required">
+      Contact Reason is <strong>required</strong>
+    </mat-error>-->
+  </mat-form-field>
+}
+<!-- Comments -->
+<mat-form-field>
+  <textarea matInput placeholder="Comment/Question" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10" formControlName="comments" [errorStateMatcher]="matcher"></textarea>
+  <!--<mat-error *ngIf="contactForm.controls['comments'].error?.required">
+  Comment/Question is <strong>required</strong>
+</mat-error>-->
+</mat-form-field>
+</form>
+@if (sendToDirectors) {
+  <div id="directors">
+    Email will be sent to all Camp Cadet Board Directors
+  </div>
+}
+</mat-dialog-content>
 
-      <!-- Comments -->
-      <mat-form-field>
-        <textarea matInput placeholder="Comment/Question" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10" formControlName="comments" [errorStateMatcher]="matcher"></textarea>
-        <!--<mat-error *ngIf="contactForm.controls['comments'].error?.required">
-          Comment/Question is <strong>required</strong>
-        </mat-error>-->
-      </mat-form-field>
-    </form>
+<mat-dialog-actions>
+  <div id="facebook">
+    <a href="https://www.facebook.com/WestmorelandCountyCampCadet/" target="_blank">
+      <img src="/assets/facebook-round.png" alt="">
+      Camp Cadet Facebook Page
+    </a>
+  </div>
 
-    <div id="directors" *ngIf="sendToDirectors">
-      Email will be sent to all Camp Cadet Board Directors
-    </div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions>
-      <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="sendEmailViaEmailJs()" [disabled]="!contactForm.dirty || contactForm.invalid">Send Email</button>
-  </mat-dialog-actions>
+  <div>
+    <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="sendEmailViaEmailJs()" [disabled]="!contactForm.dirty || contactForm.invalid">Send Email</button>
+  </div>
+</mat-dialog-actions>
 </div>
-
-<div id="facebook">
-  <a href="https://www.facebook.com/WestmorelandCountyCampCadet/" target="_blank">
-    <img src="/assets/facebook-round.png" alt="">
-    Camp Cadet Facebook Page
-  </a>
-</div>
+}

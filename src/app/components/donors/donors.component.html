@@ -2,41 +2,48 @@
 
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" class="page-background" *ngIf="dataService.dataReady">
-  <div>
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-title" *ngFor="let category of dataService.donorCategories">
-      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-      {{ category.description }}
-    </div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
-
-    <mat-accordion *ngFor="let level of dataService.donorLevels">
-      <mat-expansion-panel expanded="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title class="category">
-            {{ level.description }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div class="expansion-body" *ngFor="let donorCatLink of dataService.donorCatLinks | donorCatLinksInLevel:level">
-          <a *ngIf="donorCatLink.donor.website" [href]="donorCatLink.donor.website" target="_blank">
-              {{ donorCatLink.donor.name }}
-          </a>
-          
-          <span *ngIf="!donorCatLink.donor.website">
-              {{ donorCatLink.donor.name }}
-          </span>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-    <!-- (click)="editBlurb(blurbNameBottom)" [class.editable]="authenticationService.loggedIn" -->
+@if (dataService.dataReady) {
+  <div id="parent" class="page-background">
     <div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      @for (category of dataService.donorCategories; track category) {
+        <div class="page-title">
+          <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+          {{ category.description }}
+        </div>
+      }
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
+      @for (level of dataService.donorLevels; track level) {
+        <mat-accordion>
+          <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category">
+                {{ level.description }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (donorCatLink of dataService.donorCatLinks | donorCatLinksInLevel:level; track donorCatLink) {
+              <div class="expansion-body">
+                @if (donorCatLink.donor.website) {
+                  <a [href]="donorCatLink.donor.website" target="_blank">
+                    {{ donorCatLink.donor.name }}
+                  </a>
+                }
+                @if (!donorCatLink.donor.website) {
+                  <span>
+                    {{ donorCatLink.donor.name }}
+                  </span>
+                }
+              </div>
+            }
+          </mat-expansion-panel>
+        </mat-accordion>
+      }
+      <!-- (click)="editBlurb(blurbNameBottom)" [class.editable]="authenticationService.loggedIn" -->
+      <div>
         <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
         <span [innerHTML]="blurbNameBottom | blurb"></span>
+      </div>
     </div>
   </div>
-</div>
+}

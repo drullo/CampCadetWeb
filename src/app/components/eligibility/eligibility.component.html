@@ -1,16 +1,16 @@
-<div id="parent" *ngIf="dataService.dataReady">
-  <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-  <div id="title">
-    <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-    {{ title }}
-  </div>
-
-  <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-  <div id="blurb" [innerHTML]="blurbName | blurb"></div>
-
-  <!--
+@if (dataService.dataReady) {
+  <div id="parent">
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div id="title">
+      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+      {{ title }}
+    </div>
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div id="blurb" [innerHTML]="blurbName | blurb"></div>
+    <!--
     These are now embedded right into the blurb
     <ul>
-    <li *ngFor="let i of dataService.requirements" [innerHTML]="i.requirement"></li>
-  </ul>-->
-</div>
+      <li *ngFor="let i of dataService.requirements" [innerHTML]="i.requirement"></li>
+    </ul>-->
+  </div>
+}

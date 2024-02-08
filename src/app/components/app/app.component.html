@@ -3,4 +3,6 @@
 
 <!-- <cc-data-waiter></cc-data-waiter> -->
 <router-outlet (activate)="routeActivate($event)"></router-outlet>
-<cc-footer *ngIf="showFooter && dataService.dataReady"></cc-footer>
+@if (showFooter && dataService.dataReady) {
+  <cc-footer></cc-footer>
+}

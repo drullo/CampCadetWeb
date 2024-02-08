@@ -2,18 +2,22 @@
   <div id="portrait-carousel" class="carousel slide" data-pause="false" data-ride="carousel">
     <div class="carousel-inner">
       <!-- <div class="carousel-item" *ngFor="let image of dataService.bannerImages.portrait;let i = index" [class.active]="i == 0" -->
-      <div class="carousel-item" *ngFor="let image of banner.portrait | randomize;let i = index" [class.active]="i == 0"
-        [style.background-image]="'url(' + image + ')'">
-      </div>
+      @for (image of banner.portrait | randomize; track image; let i = $index) {
+        <div class="carousel-item" [class.active]="i == 0"
+          [style.background-image]="'url(' + image + ')'">
+        </div>
+      }
     </div>
   </div>
 
   <div id="landscape-carousel" class="carousel slide" data-pause="false" data-ride="carousel">
     <div class="carousel-inner">
       <!--<div class="carousel-item" *ngFor="let image of dataService.bannerImages.landscape;let i = index" [class.active]="i == 0"-->
-      <div class="carousel-item" *ngFor="let image of banner.landscape | randomize;let i = index" [class.active]="i == 0"
-        [style.background-image]="'url(' + image + ')'">
-      </div>
+      @for (image of banner.landscape | randomize; track image; let i = $index) {
+        <div class="carousel-item" [class.active]="i == 0"
+          [style.background-image]="'url(' + image + ')'">
+        </div>
+      }
     </div>
   </div>
 
@@ -21,41 +25,46 @@
     <div id="title">
       <img src="/assets/logo.png" alt="">
       <!--<div id="county">
-        Westmoreland County
-      </div>
-      <div class="gradient">
-          <div class="one"></div>
-          <div class="two"></div>
-      </div>
-      <div id="camp-cadet">
-        CAMP CADET
-      </div>-->
+      Westmoreland County
     </div>
+    <div class="gradient">
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <div id="camp-cadet">
+      CAMP CADET
+    </div>-->
   </div>
+</div>
 
-  <div id="bottom" class="absolute">
-    <div *ngIf="!dataService.dataReady">
-        <div>Loading Data...</div>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<div id="bottom" class="absolute">
+  @if (!dataService.dataReady) {
+    <div>
+      <div>Loading Data...</div>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
+  }
 
-    <!-- [class.editable]="authenticationService.loggedIn" [title]="authenticationService.loggedIn ? 'Click to edit camp dates' : ''" (click)="editCampDates()" -->
-    <div *ngIf="dataService.dataReady && dataService.campDates">
+  <!-- [class.editable]="authenticationService.loggedIn" [title]="authenticationService.loggedIn ? 'Click to edit camp dates' : ''" (click)="editCampDates()" -->
+  @if (dataService.dataReady && dataService.campDates) {
+    <div>
       <div>
-          Next camp session
+        Next camp session
       </div>
       <div id="dates">
         <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
         {{ dataService.campDates.startDate | date:'EEEE, MMMM d' }}
       </div>
-
       <div class="scroll-down">{{ scrollDownText}}</div>
     </div>
+  }
 
-    <!-- [class.editable]="authenticationService.loggedIn" -->
-    <div *ngIf="dataService.dataReady && !dataService.campDates" class="scroll-down">
+  <!-- [class.editable]="authenticationService.loggedIn" -->
+  @if (dataService.dataReady && !dataService.campDates) {
+    <div class="scroll-down">
       <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
       {{ scrollDownText}}
     </div>
-  </div>
+  }
+</div>
 </div>

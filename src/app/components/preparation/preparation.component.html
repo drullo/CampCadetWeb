@@ -2,24 +2,24 @@
 
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
-  <div>
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-title">
-      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-      {{ title }}
-    </div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
-
-    <div id="print">
-      <a [routerLink]="['/print', 'prep']" target="_blank">
-        <button mat-raised-button color="primary">
-          <mat-icon>print</mat-icon>
-          Print
-        </button>
-      </a>
+@if (dataService.dataReady) {
+  <div id="parent" class="page-background dark-bg">
+    <div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-title">
+        <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+        {{ title }}
+      </div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
+      <div id="print">
+        <a [routerLink]="['/print', 'prep']" target="_blank">
+          <button mat-raised-button color="primary">
+            <mat-icon>print</mat-icon>
+            Print
+          </button>
+        </a>
+      </div>
     </div>
   </div>
-</div>
+}

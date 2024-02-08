@@ -2,19 +2,19 @@
 
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" *ngIf="dataService.dataReady" class="page-background dark-bg">
-  <div>
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-title">
-      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-      {{ title }}
-    </div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
-
-    <div id="iframe-wrapper">
-      <iframe src="https://www.youtube.com/embed/drmwqgEWTdI?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+@if (dataService.dataReady) {
+  <div id="parent" class="page-background dark-bg">
+    <div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-title">
+        <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+        {{ title }}
+      </div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
+      <div id="iframe-wrapper">
+        <iframe src="https://www.youtube.com/embed/drmwqgEWTdI?rel=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
-</div>
+}

@@ -2,29 +2,32 @@
 
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" class="page-background" *ngIf="dataService.dataReady">
-  <div>
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-title">
-      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-      {{ title }}
+@if (dataService.dataReady) {
+  <div id="parent" class="page-background">
+    <div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-title">
+        <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+        {{ title }}
+      </div>
+      <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+      <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
+      @for (category of dataService.linkCategories; track category) {
+        <mat-accordion>
+          <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category">
+                {{ category.description }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (link of dataService.links | linkForCategory:category; track link) {
+              <div class="expansion-body">
+                <a [href]="link.url" target="_blank">{{ link.description }}</a>
+              </div>
+            }
+          </mat-expansion-panel>
+        </mat-accordion>
+      }
     </div>
-
-    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-    <div class="page-blurb" [innerHTML]="blurbName | blurb"></div>
-
-    <mat-accordion *ngFor="let category of dataService.linkCategories">
-      <mat-expansion-panel expanded="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title class="category">
-            {{ category.description }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div class="expansion-body" *ngFor="let link of dataService.links | linkForCategory:category">
-          <a [href]="link.url" target="_blank">{{ link.description }}</a>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
   </div>
-</div>
+}

@@ -1,16 +1,17 @@
 <cc-data-waiter></cc-data-waiter>
 
-<div id="parent" *ngIf="dataService.dataReady && (blurbName | blurb)" class="dark-bg">
-  <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
-  <div class="page-title">
-    <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
-    {{ title }}?
+@if (dataService.dataReady && (blurbName | blurb)) {
+  <div id="parent" class="dark-bg">
+    <!-- (click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn" -->
+    <div class="page-title">
+      <!--<mat-icon class="edit-icon" *ngIf="authenticationService.loggedIn">edit</mat-icon>-->
+      {{ title }}?
+    </div>
+    <!--(click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"-->
+    <div id="blurb">
+      <img src="/assets/badge.png" alt="">
+      <span [innerHTML]="'What is Camp Cadet' | blurb"></span>
+    </div>
+    <cc-eligibility></cc-eligibility>
   </div>
-  <!--(click)="editBlurb(blurbName)" [class.editable]="authenticationService.loggedIn"-->
-  <div id="blurb">
-    <img src="/assets/badge.png" alt="">
-    <span [innerHTML]="'What is Camp Cadet' | blurb"></span>
-  </div>
-
-  <cc-eligibility></cc-eligibility>
-</div>
+}

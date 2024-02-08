@@ -1,10 +1,12 @@
-<div id="parent" *ngIf="!dataService.dataReady">
-  <div>Loading Camp Cadet website...</div>
-  <div>
-    <!--<mat-spinner diameter="100"></mat-spinner>-->
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+@if (!dataService.dataReady) {
+  <div id="parent">
+    <div>Loading Camp Cadet website...</div>
+    <div>
+      <!--<mat-spinner diameter="100"></mat-spinner>-->
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div>
+      <img src="/assets/badge.png" alt="">
+    </div>
   </div>
-  <div>
-    <img src="/assets/badge.png" alt="">
-  </div>
-</div>
+}
