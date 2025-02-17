@@ -1,5 +1,5 @@
 export const config = {
-    api: 'http://www.westmorelandcampcadet.org',
+    api: '',
     emailJs: {
         publicKey: 'IzTjPBVBXcGc3LUEs',
         serviceId: 'campcadetgmail',
