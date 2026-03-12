@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { ConfigSetting } from '../model/config-setting';
@@ -8,9 +8,9 @@ import { ConfigSetting } from '../model/config-setting';
   providedIn: 'root'
 })
 export class ConfigService {
-  private url = `${config.api}/api/config`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/config`;
 
   getAllSettings(): Observable<ConfigSetting[]> {
     return this.http.get<ConfigSetting[]>(this.url);

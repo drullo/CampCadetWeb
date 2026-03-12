@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { MenuComponent } from '../menu/menu.component';
+import { PromoVideoComponent } from '../promo-video/promo-video.component';
+import { WhatIsCampCadetComponent } from '../what-is-camp-cadet/what-is-camp-cadet.component';
 
 @Component({
-  selector: 'cc-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'cc-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    imports: [
+        CarouselComponent, WhatIsCampCadetComponent, PromoVideoComponent, MenuComponent]
 })
 export class HomeComponent {
 }

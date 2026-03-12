@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 
@@ -7,9 +7,9 @@ import { config } from '../config';
   providedIn: 'root'
 })
 export class CarouselService {
-  private url = `${config.api}/api/images/banner`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/images/banner`;
 
   /*getBannerImages(): Observable<string[]> {
     return this.http.get<string[]>(this.url);

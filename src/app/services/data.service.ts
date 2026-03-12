@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DateTime } from 'luxon';
 import { forkJoin } from 'rxjs';
 
@@ -25,11 +25,20 @@ import { LinksService } from './links.service';
   providedIn: 'root'
 })
 export class DataService {
+  private blurbService = inject(BlurbsService);
+  private boardService = inject(BoardService);
+  private configService = inject(ConfigService);
+  private contactService = inject(ContactService);
+  private dateService = inject(DateService);
+  private donorService = inject(DonorsService);
+  private faqService = inject(FaqService);
+  private linkService = inject(LinksService);
+
   // bannerImages: { portrait: string[], landscape: string[] } = { portrait: [], landscape: [] };
-  campDates: CampDates | undefined;
+  campDates?: CampDates;
   blurbs: Blurb[] = [];
-  campDirector: BoardMember | undefined;
-  dataReady: boolean | undefined;
+  campDirector?: BoardMember;
+  dataReady?: boolean;
   boardMembers: BoardMember[] = [];
   boardMemberCategories: SimpleItem[] = [];
   donorCatLinks: DonorCategoryLink[] = [];
@@ -46,18 +55,6 @@ export class DataService {
   contactReasons: SimpleItem[] = [];
   boardDirectors: BoardMember[] = [];
   configSettings: ConfigSetting[] = [];
-
-  constructor(private blurbService: BlurbsService,
-    private boardService: BoardService,
-    //carouselService: CarouselService,
-    private configService: ConfigService,
-    private contactService: ContactService,
-    private dateService: DateService,
-    private donorService: DonorsService,
-    private faqService: FaqService,
-    private linkService: LinksService) {
-
-  }
 
   getData(): void {
     // Banner images - portrait

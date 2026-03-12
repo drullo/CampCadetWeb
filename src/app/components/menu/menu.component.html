@@ -199,17 +199,24 @@
       </button>
     }
   </div>
-  @if (application) {
+  <!--@if (application) {
     <div class="dark-bg">
       <a [href]="application" target="_blank">
-        <!--Download {{ applicationYear }} Application-->
         <button mat-raised-button color="warn">
           <mat-icon>file_download</mat-icon>
           <span>Sign Up!</span>
         </button>
       </a>
     </div>
-  }
+  }-->
+    <div class="dark-bg">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScaC0pGtKMN_u-Ni5Q8I5AR9KfNqEg3szpsRi5E-BoeFQH_hQ/viewform?usp=publish-editor" target="_blank">
+        <button mat-raised-button color="warn">
+          <mat-icon>file_download</mat-icon>
+          <span>Sign Up!</span>
+        </button>
+      </a>
+    </div>
 </mat-toolbar-row>
 </mat-toolbar>
 }

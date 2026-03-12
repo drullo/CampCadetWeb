@@ -2,9 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DonorCategoryLink } from '../model/donor-category-link';
 import { DonorLevel } from '../model/donor-level';
 
-@Pipe({
-  name: 'donorCatLinksInLevel'
-})
+@Pipe({ name: 'donorCatLinksInLevel' })
 export class DonorCatLinksInLevelPipe implements PipeTransform {
 
   transform(donorCatLinks: DonorCategoryLink[], level: DonorLevel): DonorCategoryLink[] {

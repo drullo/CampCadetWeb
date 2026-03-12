@@ -1,12 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import { DataService } from '../services/data.service';
 
-@Pipe({
-  name: 'blurb'
-})
+@Pipe({ name: 'blurb' })
 export class BlurbPipe implements PipeTransform {
+  private dataService = inject(DataService);
 
-  constructor(private dataService: DataService) { }
 
   transform(blurbName: string): string | undefined {
     /*if (!this.dataService.blurbs || !blurbName) { return; }

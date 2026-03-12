@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'randomize'
-})
+@Pipe({ name: 'randomize' })
 export class RandomizePipe implements PipeTransform {
 
   transform(array: string[]): string[] {

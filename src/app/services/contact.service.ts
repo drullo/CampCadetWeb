@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { Email } from '../model/email';
@@ -9,9 +9,9 @@ import { SimpleItem } from '../model/simple-item';
   providedIn: 'root'
 })
 export class ContactService {
-  private url = `${config.api}/api`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api`;
 
   getContactCategories(): Observable<SimpleItem[]> {
     return this.http.get<SimpleItem[]>(`${this.url}/contactcategories`);

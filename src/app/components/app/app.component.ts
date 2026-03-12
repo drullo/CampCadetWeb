@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../../services/data.service';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import { config } from '../../config';
+import { DataService } from '../../services/data.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-  selector: 'cc-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'cc-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, FooterComponent]
 })
 export class AppComponent {
+  dataService = inject(DataService);
+  private route = inject(ActivatedRoute);
+
   showFooter = true;
 
   //#region Lifecycle
-  constructor(public dataService: DataService, private route: ActivatedRoute) {
+  constructor() {
     emailjs.init({
       publicKey: config.emailJs.publicKey
     });

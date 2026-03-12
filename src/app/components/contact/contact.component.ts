@@ -1,25 +1,34 @@
-//#region Imports
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { from } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import emailjs from '@emailjs/browser';
+import { from } from 'rxjs';
 
 import { config } from '../../config';
 
 import { DataService } from '../../services/data.service';
 //import { ContactService } from '../../services/contact.service';
 //import { Email } from '../../model/email';
-import { FormErrorState } from '../../model/form-error-state';
 import { EmailJsResponseStatus } from '../../model/emailjs-response-status';
-//#endregion
+import { FormErrorState } from '../../model/form-error-state';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'cc-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+    selector: 'cc-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.css'],
+    imports: [MatProgressSpinner, MatDialogTitle, CdkScrollable, MatDialogContent, FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatSelect, MatOption, MatDialogActions, MatButton]
 })
 export class ContactComponent {
+  dataService = inject(DataService);
+  dialogRef = inject<MatDialogRef<ContactComponent>>(MatDialogRef);
+
   //#region Fields
   //#region Form Controls
   contactForm = new FormGroup({
@@ -37,14 +46,6 @@ export class ContactComponent {
   matcher = new FormErrorState();
 
   sendToDirectors = false;
-  //#endregion
-
-  constructor(
-    //private contactService: ContactService,
-    public dataService: DataService,
-    public dialogRef: MatDialogRef<ContactComponent>) {
-
-  }
 
   sendEmailViaEmailJs(): void {
     if (!this.dataService.configSettings) { return; }

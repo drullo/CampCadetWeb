@@ -2,9 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Link } from '../model/link';
 import { SimpleItem } from '../model/simple-item';
 
-@Pipe({
-  name: 'linkForCategory'
-})
+@Pipe({ name: 'linkForCategory' })
 export class LinkForCategoryPipe implements PipeTransform {
 
   transform(links: Link[], category: SimpleItem): Link[] {

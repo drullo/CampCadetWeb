@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { RequiredItem } from '../model/required-item';
@@ -8,9 +8,9 @@ import { RequiredItem } from '../model/required-item';
   providedIn: 'root'
 })
 export class RequiredItemsService {
-  private url = `${config.api}/api/campsupplies`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/campsupplies`;
 
   getItems(): Observable<RequiredItem[]> {
     return this.http.get<RequiredItem[]>(this.url);

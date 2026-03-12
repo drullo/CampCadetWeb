@@ -2,9 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { BoardMember } from '../model/board-member';
 import { SimpleItem } from '../model/simple-item';
 
-@Pipe({
-  name: 'memberForCategory'
-})
+@Pipe({ name: 'memberForCategory' })
 export class MemberForCategoryPipe implements PipeTransform {
 
   transform(members: BoardMember[], category: SimpleItem): BoardMember[] {

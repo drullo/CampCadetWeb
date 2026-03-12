@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { DonorCategoryLink } from '../model/donor-category-link';
@@ -9,9 +9,9 @@ import { DonorLevel } from '../model/donor-level';
   providedIn: 'root'
 })
 export class DonorsService {
-  private url = `${config.api}/api`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api`;
 
   getDonorLevels(): Observable<DonorLevel[]> {
     return this.http.get<DonorLevel[]>(`${this.url}/donorlevels`);

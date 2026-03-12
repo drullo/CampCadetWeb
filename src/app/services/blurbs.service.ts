@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { Blurb } from '../model/blurb';
@@ -8,9 +8,9 @@ import { Blurb } from '../model/blurb';
   providedIn: 'root'
 })
 export class BlurbsService {
-  private url = `${config.api}/api/blurbs`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/blurbs`;
 
   getBlurbs(): Observable<Blurb[]> {
     return this.http.get<Blurb[]>(this.url);

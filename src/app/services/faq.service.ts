@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { Faq } from '../model/faq';
@@ -9,9 +9,9 @@ import { SimpleItem } from '../model/simple-item';
   providedIn: 'root'
 })
 export class FaqService {
-  private url = `${config.api}/api`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api`;
 
   getCategories(): Observable<SimpleItem[]> {
     return this.http.get<SimpleItem[]>(`${this.url}/faqcategories`);

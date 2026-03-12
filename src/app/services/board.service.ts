@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { BoardMember } from '../model/board-member';
@@ -8,9 +8,9 @@ import { BoardMember } from '../model/board-member';
   providedIn: 'root'
 })
 export class BoardService {
-  private url = `${config.api}/api/members`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/members`;
 
   getMembers(): Observable<BoardMember[]> {
     return this.http.get<BoardMember[]>(this.url);

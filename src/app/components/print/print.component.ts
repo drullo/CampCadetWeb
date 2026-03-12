@@ -1,18 +1,22 @@
-//#region Imports
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { DataService } from '../../services/data.service';
 import { timer } from 'rxjs';
-//#endregion
+import { BlurbPipe } from '../../pipes/blurb.pipe';
+import { FaqForCategoryPipe } from '../../pipes/faq-for-category.pipe';
+import { DataService } from '../../services/data.service';
+import { DataWaiterComponent } from '../data-waiter/data-waiter.component';
+
 @Component({
-  selector: 'cc-print',
-  templateUrl: './print.component.html',
-  styleUrls: ['./print.component.css']
+    selector: 'cc-print',
+    templateUrl: './print.component.html',
+    styleUrls: ['./print.component.css'],
+    imports: [DataWaiterComponent, BlurbPipe, FaqForCategoryPipe]
 })
 export class PrintComponent implements OnInit {
-  topic: string | null | undefined;
+  private route = inject(ActivatedRoute);
+  dataService = inject(DataService);
 
-  constructor(private route: ActivatedRoute, public dataService: DataService) { }
+  topic?: string | null;
 
   ngOnInit() {
     this.route.paramMap

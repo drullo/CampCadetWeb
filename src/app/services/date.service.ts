@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { CampDates } from '../model/camp-dates';
@@ -8,9 +8,9 @@ import { CampDates } from '../model/camp-dates';
   providedIn: 'root'
 })
 export class DateService {
-  private url = `${config.api}/api/campdates`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/campdates`;
 
   getAll(): Observable<CampDates[]> {
     return this.http.get<CampDates[]>(this.url);

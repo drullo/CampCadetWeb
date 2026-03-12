@@ -1,14 +1,18 @@
-//#region Imports
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { RandomizePipe } from '../../pipes/randomize.pipe';
 import { DataService } from '../../services/data.service';
-//#endregion
 
 @Component({
-  selector: 'cc-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css']
+    selector: 'cc-carousel',
+    templateUrl: './carousel.component.html',
+    styleUrls: ['./carousel.component.css'],
+    imports: [MatProgressBar, DatePipe, RandomizePipe]
 })
 export class CarouselComponent {
+  dataService = inject(DataService);
+
   scrollDownText = 'Scroll down for enrollment info and details about our camp...';
   banner = {
     landscape: [
@@ -40,8 +44,6 @@ export class CarouselComponent {
       '/assets/banner/portrait/trooper-salute.jpg'
     ]
   };
-
-  constructor(public dataService: DataService) { }
 
   /*editCampDates(): void {
     if (!this.authenticationService.loggedIn) { return; }

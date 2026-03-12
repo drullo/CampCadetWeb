@@ -1,24 +1,23 @@
-//#region Imports
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 import { DateTime } from 'luxon';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ContactComponent } from '../../components/contact/contact.component';
 import { DataService } from '../../services/data.service';
-//#endregion
 
 @Component({
-  selector: 'cc-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+    selector: 'cc-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.css'],
+    imports: [RouterLink, ToastrModule]
 })
 export class FooterComponent implements OnInit {
-  year: number | undefined;
+  private dialog = inject(MatDialog);
+  private toastr = inject(ToastrService);
+  dataService = inject(DataService);
 
-  constructor(private dialog: MatDialog,
-    private toastr: ToastrService,
-    public dataService: DataService) {
-  }
+  year?: number;
 
   ngOnInit() {
     this.year = DateTime.now().year;

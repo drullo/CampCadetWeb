@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../config';
 import { Requirement } from '../model/requirement';
@@ -8,9 +8,9 @@ import { Requirement } from '../model/requirement';
   providedIn: 'root'
 })
 export class RequirementsService {
-  private url = `${config.api}/api/eligibility`;
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = `${config.api}/api/eligibility`;
 
   getRequirements(): Observable<Requirement[]> {
     return this.http.get<Requirement[]>(this.url);
