@@ -1,0 +1,10 @@
+<cc-data-waiter></cc-data-waiter>
+
+@if (dataService.dataReady) {
+  <div id="parent" class="dark-bg">
+    To apply, fill out the form by clicking 'Sign Up' or scanning this QR code.
+    <div style="margin: 2rem;">
+        <img src="/assets/application-qr-code.png" style="max-width: 200px;" />
+    </div>
+  </div>
+}
